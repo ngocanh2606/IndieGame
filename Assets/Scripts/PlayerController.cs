@@ -2,75 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
-    public float constantSpeed = 5f;       // Speed of movement when sliding
-    public float singleUnit = 1f;          // Distance moved on tap
-    public float slideThreshold = 10f;     // Minimum distance to detect a slide
-
+    public float constantSpeed = 5f;       // Speed of movement when holding buttons
     public PlayerMovement playerMovement;  // Reference to the PlayerMovement script
     public Button leftButton;
     public Button rightButton;
 
-    private Vector2 startTouchPosition;
-    private bool isSliding;
+    private bool moveLeft;    // Track if left button is being held
+    private bool moveRight;   // Track if right button is being held
 
     void Start()
     {
-        // Assign button event listeners
-        leftButton.onClick.AddListener(() => OnButtonPress(Vector2.left));
-        rightButton.onClick.AddListener(() => OnButtonPress(Vector2.right));
+        // Add event listeners for button hold functionality
+        AddEventTrigger(leftButton.gameObject, OnLeftButtonDown, EventTriggerType.PointerDown);
+        AddEventTrigger(leftButton.gameObject, OnButtonUp, EventTriggerType.PointerUp);
+
+        AddEventTrigger(rightButton.gameObject, OnRightButtonDown, EventTriggerType.PointerDown);
+        AddEventTrigger(rightButton.gameObject, OnButtonUp, EventTriggerType.PointerUp);
     }
 
     void Update()
     {
-        HandleTouchInput();
-    }
-
-    private void HandleTouchInput()
-    {
-        if (Input.touchCount > 0)
+        // Continuous movement when holding buttons
+        if (moveLeft)
         {
-            Touch touch = Input.GetTouch(0);
-
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    startTouchPosition = touch.position;
-                    isSliding = false;
-                    break;
-
-                case TouchPhase.Moved:
-                    float distance = touch.position.x - startTouchPosition.x;
-
-                    if (Mathf.Abs(distance) > slideThreshold)
-                    {
-                        // Sliding detected
-                        isSliding = true;
-                        Vector2 direction = distance > 0 ? Vector2.right : Vector2.left;
-                        playerMovement.SetMoveDirection(direction);
-                    }
-                    break;
-
-                case TouchPhase.Ended:
-                    playerMovement.StopMoving(); // Stop movement when touch ends
-
-                    if (!isSliding)
-                    {
-                        // It's a tap, move by single unit
-                        float tapDistance = touch.position.x - startTouchPosition.x;
-                        Vector2 direction = tapDistance > 0 ? Vector2.right : Vector2.left;
-                        playerMovement.MoveSingleUnit(direction, singleUnit);
-                    }
-                    break;
-            }
+            playerMovement.SetMoveDirection(Vector2.left);
+        }
+        else if (moveRight)
+        {
+            playerMovement.SetMoveDirection(Vector2.right);
+        }
+        else
+        {
+            playerMovement.StopMoving(); // Stop moving when neither button is held
         }
     }
 
-    private void OnButtonPress(Vector2 direction)
+    private void AddEventTrigger(GameObject obj, System.Action<BaseEventData> action, EventTriggerType triggerType)
     {
-        // Move by a single unit in the direction of the button press
-        playerMovement.MoveSingleUnit(direction, singleUnit);
+        EventTrigger trigger = obj.GetComponent<EventTrigger>() ?? obj.AddComponent<EventTrigger>();
+        EventTrigger.Entry entry = new EventTrigger.Entry { eventID = triggerType };
+        entry.callback.AddListener((data) => action.Invoke(data));
+        trigger.triggers.Add(entry);
+    }
+
+    private void OnLeftButtonDown(BaseEventData data)
+    {
+        moveLeft = true;
+    }
+
+    private void OnRightButtonDown(BaseEventData data)
+    {
+        moveRight = true;
+    }
+
+    private void OnButtonUp(BaseEventData data)
+    {
+        moveLeft = false;
+        moveRight = false;
     }
 }
