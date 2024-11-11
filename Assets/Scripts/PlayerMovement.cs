@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection = Vector2.zero;
 
     //Gravity Dash
-    public float dashSpeed = 15f;     // Boosted speed during dash
+    public float dashSpeed = 50f;     // Boosted speed during dash
     public float dashDuration = 0.5f; // Duration of the dash in seconds
     public float dashCooldown = 1f;   // Cooldown between dashes in seconds
 
@@ -63,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Set the dash direction based on the current move direction
         dashDirection = moveDirection.normalized;
+
+        HandleDash();
     }
 
     private void HandleDash()

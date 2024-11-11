@@ -28,14 +28,17 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+
+        // Assuming the player has a health script with a TakeDamage method
+        //PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+        //if (playerHealth != null)
+        //{
+        //    playerHealth.TakeDamage(bulletAbility.damageAmount);
+        //}
+
+        if (other.TryGetComponent<IDamageable>(out var hit))
         {
-            // Assuming the player has a health script with a TakeDamage method
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(bulletAbility.damageAmount);
-            }
+            hit.OnTakeDamage(bulletAbility.damageAmount);
 
             // Handle any special effects
             if (bulletAbility.hasSpecialEffect)
@@ -45,6 +48,7 @@ public class EnemyBullet : MonoBehaviour
 
             Destroy(gameObject); // Destroy bullet on impact
         }
+
     }
 
     private void ApplySpecialEffect(Collider2D player)
