@@ -4,71 +4,44 @@ using UnityEngine;
 
 public class GravityFreeAbility : Ability
 {
-    public float movementSpeed = 5f;     // Speed of movement
-    public float rotationSpeed = 5f;    // Speed of rotation to align with surfaces
-    public LayerMask surfaceLayer;      // Layer to detect surfaces
-    public float surfaceCheckDistance = 1.5f;  // Distance to check for nearby surfaces
+    public float gravityFreeDuration = 5f; // Duration the gravity-free effect lasts
+    private bool isGravityFree = false;   // To track if the ability is currently active
 
-    private bool isGravityFree = false; // State of the gravity-free ability
-    private Rigidbody rb;               // Reference to the player's Rigidbody
+    private Rigidbody rb;
 
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.useGravity = true;  // Enable gravity by default
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G)) // Press G to toggle Gravity-Free mode
-        {
-            ToggleGravityFree();
-        }
-
-        if (isGravityFree)
-        {
-            HandleMovement();
-            AlignToSurface();
-        }
+        rb = GetComponent<Rigidbody>(); // Get reference to Rigidbody (make sure the player has a Rigidbody)
     }
 
     public override void Activate()
     {
-        Debug.Log("Gravity-Free Ability Activated!");
-        // Add logic for gravity-free mechanics
-    }
-
-    void ToggleGravityFree()
-    {
-        isGravityFree = !isGravityFree;
-        rb.useGravity = !isGravityFree; // Toggle Unity gravity
-
         if (!isGravityFree)
         {
-            rb.velocity = Vector3.zero; // Stop any momentum when returning to normal gravity
+            StartCoroutine(GravityFreeEffect());
         }
     }
 
-    void HandleMovement()
+    private IEnumerator GravityFreeEffect()
     {
-        // Get input for movement
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        isGravityFree = true;
 
-        // Calculate movement direction relative to the player's current orientation
-        Vector3 movement = transform.right * horizontal + transform.forward * vertical;
-        rb.velocity = movement * movementSpeed;
-    }
+        // Disable gravity
+        rb.useGravity = false;
 
-    void AlignToSurface()
-    {
-        // Check for nearby surfaces
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, surfaceCheckDistance, surfaceLayer))
-        {
-            // Align player orientation to the surface normal
-            Quaternion targetRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
+        // Allow player to move freely in all directions (no gravity)
+        // You can also adjust player movement logic here if needed
+
+        Debug.Log("Gravity Free Ability Activated!");
+
+        // Wait for the duration of the ability
+        yield return new WaitForSeconds(gravityFreeDuration);
+
+        // Re-enable gravity after the ability duration
+        rb.useGravity = true;
+
+        Debug.Log("Gravity Free Ability Deactivated!");
+
+        isGravityFree = false;
     }
 }

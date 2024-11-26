@@ -8,7 +8,7 @@ public class AbilityManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) // Replace with your ability button input
+        if (Input.GetKeyDown(KeyCode.Space)) // Replace with your ability button input
         {
             UseAbility();
         }
@@ -24,7 +24,7 @@ public class AbilityManager : MonoBehaviour
     // Use the most recently collected ability
     private void UseAbility()
     {
-        if (abilityStack.Count > 0)
+        if (abilityStack.Count > 0 && Input.GetKeyDown(KeyCode.Space))
         {
             Ability currentAbility = abilityStack.Pop(); // Remove the top ability
             currentAbility.Activate(); // Activate the ability
