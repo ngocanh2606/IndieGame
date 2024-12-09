@@ -8,4 +8,6 @@ public abstract class Ability : MonoBehaviour
     public float cooldownTime; // Cooldown time for the ability
 
     public abstract void Activate(); // Method to activate the ability
+
+
 }
