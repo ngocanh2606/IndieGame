@@ -34,7 +34,7 @@ public class FallingAbility : MonoBehaviour
         // Check if the ability has fallen off-screen
         if (transform.position.y < -10f) // Adjust the value depending on your screen bounds
         {
-            Destroy(gameObject); // Destroy the ability if it falls off-screen
+            Destroy(gameObject);
         }
     }
 

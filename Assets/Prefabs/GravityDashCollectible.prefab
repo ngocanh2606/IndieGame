@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3977406241790034809}
   - component: {fileID: 4898204937812930579}
   m_Layer: 0
-  m_Name: GravityFreeCollectible
+  m_Name: GravityDashCollectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3a201632185454e9afcea60e76394d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityPrefab: {fileID: 2196991959215376758, guid: 4a66051e45fe027488243435e50a33fd, type: 3}
+  abilityPrefab: {fileID: 7457648134651540085, guid: 080c5bce151240841a7bbf16ee392d42, type: 3}
 --- !u!114 &4898204937812930579
 MonoBehaviour:
   m_ObjectHideFlags: 0
