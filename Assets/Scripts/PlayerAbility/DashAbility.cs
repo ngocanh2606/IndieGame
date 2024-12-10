@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAbility : UseAbility
+public class DashAbility : MonoBehaviour
 {
     public float dashSpeed = 20f;
     public float dashDuration = 0.2f;
@@ -14,14 +14,13 @@ public class DashAbility : UseAbility
         rb = GetComponent<Rigidbody>(); // Assumes the script is attached to the same GameObject as the Rigidbody
     }
 
-    public override void Activate()
+    public void Activate()
     {
         if (!isDashing)
         {
             StartCoroutine(Dash());
         }
     }
-
     private IEnumerator Dash()
     {
         isDashing = true;

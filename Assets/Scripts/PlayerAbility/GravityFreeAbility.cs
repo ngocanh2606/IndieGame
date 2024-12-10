@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityFreeAbility : UseAbility
+public class GravityFreeAbility : MonoBehaviour
 {
     public float gravityFreeDuration = 5f; // Duration the gravity-free effect lasts
     private bool isGravityFree = false;   // To track if the ability is currently active
@@ -14,7 +14,7 @@ public class GravityFreeAbility : UseAbility
         rb = GetComponent<Rigidbody>(); // Get reference to Rigidbody (make sure the player has a Rigidbody)
     }
 
-    public override void Activate()
+    public void Activate()
     {
         if (!isGravityFree)
         {
