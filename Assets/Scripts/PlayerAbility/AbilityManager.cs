@@ -12,10 +12,17 @@ public class AbilityManager : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Ability
+    public struct Ability
     {
         public AbilityType type;
         public Sprite sprite;
+        //public override void Activate()
+        //{
+        //    // Default behavior or override in specific Ability classes
+        //    Debug.Log("Ability activated: " + abilityName);
+        //}
+
+        public UseAbility useAbility;
     }
 
     public Image abilityUIImage; //show icon for the ability
@@ -27,7 +34,7 @@ public class AbilityManager : MonoBehaviour
         if (abilityStack.Count > 0)
         {
             Ability currentAbility = abilityStack.Pop(); // Remove the top ability
-            //currentAbility.Activate(); // Activate the ability
+            currentAbility.useAbility.Activate();
         }
         else
         {
@@ -38,19 +45,13 @@ public class AbilityManager : MonoBehaviour
     // Collect an ability and push it to the stack, is called when the power up is collected
     public void CollectAbility(AbilityType abilityType)
     {
-        Ability newAbility = abilityDefinitions.Find(a => a.type == abilityType);
+        Ability? newAbility = abilityDefinitions.Find(a => a.type == abilityType);
 
-        if (newAbility != null)
+        if (newAbility.HasValue)
         {
-            Debug.Log("2");
-
-            abilityStack.Push(newAbility);
+            abilityStack.Push(newAbility.Value);
             Debug.Log("Added");
             UpdateAbilityUI();
-        }
-        else
-        {
-            Debug.Log("Ability not found for type: " + abilityType);
         }
     }
 

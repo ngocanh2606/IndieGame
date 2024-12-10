@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAbility : Ability
+public class DashAbility : UseAbility
 {
     public float dashSpeed = 20f;
     public float dashDuration = 0.2f;

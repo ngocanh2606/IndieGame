@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityFreeAbility : Ability
+public class GravityFreeAbility : UseAbility
 {
     public float gravityFreeDuration = 5f; // Duration the gravity-free effect lasts
     private bool isGravityFree = false;   // To track if the ability is currently active
