@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3a201632185454e9afcea60e76394d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityPrefab: {fileID: 2196991959215376758, guid: 4a66051e45fe027488243435e50a33fd, type: 3}
+  abilityType: 0
 --- !u!114 &4898204937812930579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,8 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8211ab273c43c20499f9dfd22dfa81ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 5
-  lifetime: 10
+  fallSpeed: 2
+  lifetime: 15
 --- !u!212 &9013482536902986646
 SpriteRenderer:
   m_ObjectHideFlags: 0

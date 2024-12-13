@@ -5,21 +5,18 @@ using UnityEngine;
 public class GravityFreeAbility : MonoBehaviour
 {
     public float gravityFreeDuration = 5f; // Duration the gravity-free effect lasts
-    private bool isGravityFree = false;   // To track if the ability is currently active
+    [System.NonSerialized] public bool isGravityFree = false;   // To track if the ability is currently active
 
-    private Rigidbody rb;
+    private Rigidbody2D rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>(); // Get reference to Rigidbody (make sure the player has a Rigidbody)
+        rb = GetComponent<Rigidbody2D>(); // Get reference to Rigidbody (make sure the player has a Rigidbody)
     }
 
     public void Activate()
     {
-        if (!isGravityFree)
-        {
-            StartCoroutine(GravityFreeEffect());
-        }
+        StartCoroutine(GravityFreeEffect());
     }
 
     private IEnumerator GravityFreeEffect()
@@ -27,7 +24,7 @@ public class GravityFreeAbility : MonoBehaviour
         isGravityFree = true;
 
         // Disable gravity
-        rb.useGravity = false;
+        rb.gravityScale = 0;
 
         // Allow player to move freely in all directions (no gravity)
         // You can also adjust player movement logic here if needed
@@ -38,7 +35,7 @@ public class GravityFreeAbility : MonoBehaviour
         yield return new WaitForSeconds(gravityFreeDuration);
 
         // Re-enable gravity after the ability duration
-        rb.useGravity = true;
+        rb.gravityScale = 1;
 
         Debug.Log("Gravity Free Ability Deactivated!");
 

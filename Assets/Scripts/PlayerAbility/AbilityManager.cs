@@ -24,8 +24,10 @@ public class AbilityManager : MonoBehaviour
     public List<Ability> abilityDefinitions = new List<Ability>();
     private Stack<Ability> abilityStack = new Stack<Ability>(); // Stack to store abilities
 
-    private GravityFreeAbility gravityFreeAbility;
-    private DashAbility gravityDashAbility;
+    public GravityFreeAbility gravityFreeAbility;
+    public DashAbility gravityDashAbility;
+
+    //private bool activateSuccess = true;
 
     void Start()
     {
@@ -34,11 +36,19 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnAbilityButtonPressed()
     {
+        Debug.Log("Pressed");
         if (abilityStack.Count > 0)
         {
-            Ability currentAbility = abilityStack.Pop(); // Remove the top ability
-            UseAbility(currentAbility.type);
-            UpdateAbilityUI();
+            if(gravityFreeAbility.isGravityFree == false && gravityDashAbility.isDashing == false)
+            {
+                Ability currentAbility = abilityStack.Pop(); // Remove the top ability
+                UseAbility(currentAbility.type);
+                UpdateAbilityUI();
+            }
+            else
+            {
+                Debug.Log("Wait for cooldown!");
+            }
         }
         else
         {
@@ -54,8 +64,8 @@ public class AbilityManager : MonoBehaviour
         if (newAbility.HasValue)
         {
             abilityStack.Push(newAbility.Value);
-            Debug.Log("Added");
             UpdateAbilityUI();
+            Debug.Log("Added: " + abilityType);
         }
     }
 
@@ -66,6 +76,7 @@ public class AbilityManager : MonoBehaviour
             case AbilityType.GravityFree:
                 gravityFreeAbility.Activate();
                 break;
+
             case AbilityType.GravityDash:
                 gravityDashAbility.Activate();
                 break;
