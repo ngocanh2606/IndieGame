@@ -6,10 +6,11 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
-    public float constantSpeed = 5f;       // Speed of movement when holding buttons
-    public PlayerMovement playerMovement;  // Reference to the PlayerMovement script
+    public float constantSpeed = 5f;        // Speed of movement when holding buttons
+    public PlayerMovement playerMovement;   // Reference to the PlayerMovement script
     public Button leftButton;
     public Button rightButton;
+    public Button jumpButton;               // The jump button
 
     private bool moveLeft;    // Track if left button is being held
     private bool moveRight;   // Track if right button is being held
@@ -22,6 +23,9 @@ public class PlayerController : MonoBehaviour
 
         AddEventTrigger(rightButton.gameObject, OnRightButtonDown, EventTriggerType.PointerDown);
         AddEventTrigger(rightButton.gameObject, OnButtonUp, EventTriggerType.PointerUp);
+
+        // Add event listener for the jump button
+        jumpButton.onClick.AddListener(OnJumpButtonPressed);
     }
 
     void Update()
@@ -63,5 +67,11 @@ public class PlayerController : MonoBehaviour
     {
         moveLeft = false;
         moveRight = false;
+    }
+
+    private void OnJumpButtonPressed()
+    {
+        // Trigger jump action in PlayerMovement
+        playerMovement.Jump();
     }
 }
