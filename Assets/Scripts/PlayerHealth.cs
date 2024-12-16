@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IDamageable
+public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100f;      // Player's maximum health
     private float currentHealth;        // Player's current health
@@ -25,22 +25,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             HandleHealthRegeneration();
         }
     }
-
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    Debug.Log("colliding");
-    //     Check if the collision is with an object tagged "Enemy"
-    //    if (collision.gameObject.CompareTag("Enemy"))
-    //    {
-    //         Try to get the EnemyDamage component from the collided object
-    //        TestDamage enemyDamage = collision.gameObject.GetComponent<TestDamage>();
-    //        if (enemyDamage != null)
-    //        {
-    //             Apply the specific damage amount based on the enemy
-    //            TakeDamage(enemyDamage.damageAmount);
-    //        }
-    //    }
-    //}
 
     private void HandleHealthRegeneration()
     {
