@@ -2243,7 +2243,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3275823695345185366, guid: 2df11bb862d964a4cabe9ff7a2679512, type: 3}
   shootPoint: {fileID: 1978669505}
   maxHealth: 100
-  shootingInterval: 2
+  patternChangeInterval: 4
 --- !u!1 &2035570929
 GameObject:
   m_ObjectHideFlags: 0
