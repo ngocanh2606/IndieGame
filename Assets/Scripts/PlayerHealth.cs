@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth = 100f;      // Player's maximum health
+    [SerializeField] private float maxHealth = 100f;      // Player's maximum health
     private float currentHealth;        // Player's current health
 
-    public float regenerationRate = 5f;      // Amount of health regenerated per tick
-    public float regenerationInterval = 1f;  // Time interval between regeneration ticks (in seconds)
+    [SerializeField] private float regenerationRate = 5f;      // Amount of health regenerated per tick
+    [SerializeField] private float regenerationInterval = 1f;  // Time interval between regeneration ticks (in seconds)
     private float regenerationTimer;         // Timer to track regeneration intervals
 
+    public bool isDead = false;
+    public static bool isPlayerDead = false;
 
     void Start()
     {
@@ -20,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         // Regenerate health if below max
-        if (currentHealth < maxHealth)
+        if (currentHealth < maxHealth && !isDead)
         {
             HandleHealthRegeneration();
         }
@@ -43,20 +45,54 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void Die()
-    {
-        Debug.Log("Player has died!");
-        // Add death handling logic here (e.g., disable player, trigger respawn, show game over screen)
-    }
-
     public void OnTakeDamage(float damageAmount)
     {
+        if (isDead) return; // Don't take damage if player is dead
         currentHealth -= damageAmount;
+        currentHealth = Mathf.Max(currentHealth, 0); // Ensure health doesn't go below 0
         Debug.Log("Player took damage: " + damageAmount + ", Current Health: " + currentHealth);
 
         if (currentHealth <= 0)
         {
             Die();
+        }
+    }
+
+    private void Die()
+    {
+        if (isDead) return;  // Prevent multiple death triggers
+        isDead = true;
+        isPlayerDead = true;
+        //death anim here
+        Debug.Log("Player has died!");
+        DisablePlayerMovement();
+        //trigger game over screen
+    }
+
+    private void DisablePlayerMovement()
+    {
+        PlayerController playerController = GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;  
+        }
+
+        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = false;
+        }
+
+        AbilityManager abilityManager = GetComponent<AbilityManager>();
+        if (abilityManager != null)
+        {
+            abilityManager.enabled = false;
+        }
+
+        PlayerShooting playerShooting = GetComponent<PlayerShooting>();
+        if (playerShooting != null)
+        {
+            playerShooting.enabled = false; 
         }
     }
 }

@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
     }
 
     // Handle collision (this is an example, make sure you adjust for your specific needs)
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Handle damage or destruction on collision
         if (collision.gameObject.CompareTag("Player"))

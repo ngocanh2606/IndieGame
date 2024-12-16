@@ -11,13 +11,38 @@ public class AbilitySpawner : MonoBehaviour
     public float horizontalPadding = 0.5f; // Horizontal padding to prevent spawning too close to screen edges
     private Camera mainCamera;
 
+    private PlayerHealth playerHealth;
+
     private void Start()
     {
         // Get the main camera reference
         mainCamera = Camera.main;
 
-        // Start the spawn loop
-        InvokeRepeating("SpawnAbility", 0f, spawnRate);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
+
+        if (playerHealth != null && !playerHealth.isDead)
+        {
+            InvokeRepeating("SpawnAbility", 0f, spawnRate);
+        }
+    }
+
+    private void Update()
+    {
+        // If the player dies, stop the spawning
+        if (playerHealth != null && playerHealth.isDead)
+        {
+            CancelInvoke("SpawnAbility"); // Stop the spawn loop
+
+        }
+        else if (!IsInvoking("SpawnAbility"))
+        {
+            // If the player is alive, ensure spawning continues
+            InvokeRepeating("SpawnAbility", 0f, spawnRate);
+        }
     }
 
     private void SpawnAbility()

@@ -4,36 +4,40 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    public GameObject projectilePrefab;      // The projectile to shoot
-    public Transform shootPoint;             // The point from which the boss shoots
-    public float maxHealth = 100f;           // The maximum health of the boss
-    public float currentHealth;              // The current health of the boss
+    [SerializeField] private GameObject projectilePrefab;      // The projectile to shoot
+    [SerializeField] private Transform shootPoint;             // The point from which the boss shoots
+    [SerializeField] private float maxHealth = 100f;           // The maximum health of the boss
+    private float currentHealth;              // The current health of the boss
 
     private IShootPattern currentShootPattern;  // The current shooting pattern
 
     // Shooting pattern configurations
-    private float patternChangeInterval = 2f;   // Interval at which the pattern is changed
-    private float lastPatternChangeTime;        // Time of the last pattern change
+    [SerializeField] private float shootingInterval = 2f;   // Fire rate (time between shots)
+    private float timeSinceLastShot;        // Time of the last pattern change
 
     private void Start()
     {
+        PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+
         currentHealth = maxHealth; // Initialize health
-        lastPatternChangeTime = Time.time; // Set the initial pattern change time
+        timeSinceLastShot = Time.time; // Set the initial pattern change time
         SetRandomShootPattern(); // Initialize the first pattern
     }
 
     private void Update()
     {
-        
-        // Change the shooting pattern based on the boss's health at regular intervals or conditions
-        if (Time.time - lastPatternChangeTime >= patternChangeInterval)
+        if (!PlayerHealth.isPlayerDead)
         {
-            SetRandomShootPattern(); // Randomly change shooting pattern
-            lastPatternChangeTime = Time.time; // Update the last pattern change time
-        }
+            // Change the shooting pattern based on the boss's health at regular intervals or conditions
+            if (Time.time - timeSinceLastShot >= shootingInterval)
+            {
+                SetRandomShootPattern(); // Randomly change shooting pattern
+                timeSinceLastShot = Time.time; // Update the last pattern change time
+            }
 
-        // Shoot the current pattern
-        currentShootPattern.Shoot(shootPoint.position, 0f, 30f, 5, projectilePrefab);
+            // Shoot the current pattern
+            currentShootPattern.Shoot(shootPoint.position, 0f, 30f, 5, projectilePrefab);
+        }
     }
 
     // Randomly choose a shooting pattern, considering the health of the boss
