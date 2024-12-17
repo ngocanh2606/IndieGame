@@ -7,13 +7,13 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     public float constantSpeed = 5f;        // Speed of movement when holding buttons
-    public PlayerMovement playerMovement;   // Reference to the PlayerMovement script
+    public PlayerMovement playerMovement;
     public Button leftButton;
     public Button rightButton;
-    public Button jumpButton;               // The jump button
+    public Button jumpButton;
 
-    private bool moveLeft;    // Track if left button is being held
-    private bool moveRight;   // Track if right button is being held
+    private bool moveLeft;                  // Track if left button is being held
+    private bool moveRight;                 // Track if right button is being held
 
     void Start()
     {
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Helper method to add button event listeners
     private void AddEventTrigger(GameObject obj, System.Action<BaseEventData> action, EventTriggerType triggerType)
     {
         EventTrigger trigger = obj.GetComponent<EventTrigger>() ?? obj.AddComponent<EventTrigger>();
@@ -53,26 +54,28 @@ public class PlayerController : MonoBehaviour
         trigger.triggers.Add(entry);
     }
 
+    // Handle left button press
     private void OnLeftButtonDown(BaseEventData data)
     {
         moveLeft = true;
     }
 
+    // Handle right button press
     private void OnRightButtonDown(BaseEventData data)
     {
         moveRight = true;
     }
 
+    // Handle button release (stop movement)
     private void OnButtonUp(BaseEventData data)
     {
         moveLeft = false;
         moveRight = false;
     }
 
-    // Jump triggered on PointerDown, as soon as the button is pressed
+    // Handle jump button press
     private void OnJumpButtonPressed(BaseEventData data)
     {
-        // Trigger jump action in PlayerMovement
         playerMovement.Jump();
     }
 }

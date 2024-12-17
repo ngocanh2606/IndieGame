@@ -5,72 +5,70 @@ using UnityEngine.UI;
 
 public class AbilityManager : MonoBehaviour
 {
+    // Enum to define different types of abilities
     public enum AbilityType
     {
         GravityFree,
         GravityDash
     }
 
+    // Struct to store ability data, including its type and icon sprite
     [System.Serializable]
     public struct Ability
     {
-        public AbilityType type;
-        public Sprite sprite;
-
-        //public UseAbility useAbility;
+        public AbilityType type;  
+        public Sprite sprite; 
     }
 
-    public Image abilityUIImage; //show icon for the ability
-    public List<Ability> abilityDefinitions = new List<Ability>();
-    private Stack<Ability> abilityStack = new Stack<Ability>(); // Stack to store abilities
+    public Image abilityUIImage;                                   // UI Image component to display the ability icon
+    public List<Ability> abilityDefinitions = new List<Ability>(); // List of defined abilities (collected abilities)
+    private Stack<Ability> abilityStack = new Stack<Ability>();    // Stack to store abilities that the player has collected
 
+    // References to the actual ability scripts for GravityFree and Dash
     public GravityFreeAbility gravityFreeAbility;
     public DashAbility gravityDashAbility;
-
-    //private bool activateSuccess = true;
 
     void Start()
     {
         gravityFreeAbility = GetComponent<GravityFreeAbility>();
-        gravityDashAbility = GetComponent<DashAbility>();
+        gravityDashAbility = GetComponent<DashAbility>();       
     }
+
+    // Method called when the ability button is pressed (UI event)
     public void OnAbilityButtonPressed()
     {
-        Debug.Log("Pressed");
+        // If the ability stack has abilities, proceed to use one
         if (abilityStack.Count > 0)
         {
-            if(gravityFreeAbility.isGravityFree == false && gravityDashAbility.isDashing == false)
+            // Check that no gravity or dash is in progress
+            if (gravityFreeAbility.isGravityFree == false && gravityDashAbility.isDashing == false)
             {
-                Ability currentAbility = abilityStack.Pop(); // Remove the top ability
-                UseAbility(currentAbility.type);
+                Ability currentAbility = abilityStack.Pop(); // Pop the top ability from the stack
+                UseAbility(currentAbility.type);             // Use the selected ability
                 UpdateAbilityUI();
             }
-            else
-            {
-                Debug.Log("Wait for cooldown!");
-            }
-        }
-        else
-        {
-            Debug.Log("No abilities to use!");
         }
     }
 
-    // Collect an ability and push it to the stack, is called when the power up is collected
+    // Collect an ability and push it to the stack (called when the player picks up an ability)
     public void CollectAbility(AbilityType abilityType)
     {
+        // Find the ability definition in the list based on the provided abilityType
         Ability? newAbility = abilityDefinitions.Find(a => a.type == abilityType);
 
+        // If the ability exists, add it to the stack and update the UI
         if (newAbility.HasValue)
         {
-            abilityStack.Push(newAbility.Value);
-            UpdateAbilityUI();
+            abilityStack.Push(newAbility.Value);  
+            UpdateAbilityUI();                    
             Debug.Log("Added: " + abilityType);
         }
     }
 
+    // Method to activate the selected ability based on its type
     void UseAbility(AbilityType abilityType)
     {
+        // Use a switch statement to trigger the corresponding ability
         switch (abilityType)
         {
             case AbilityType.GravityFree:
@@ -84,6 +82,7 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
+    // Update the UI to show the current ability's icon or clear it if no abilities are available
     void UpdateAbilityUI()
     {
         if (abilityStack.Count > 0)
@@ -93,7 +92,7 @@ public class AbilityManager : MonoBehaviour
         }
         else
         {
-            abilityUIImage.sprite = null; // Clear the sprite if no abilities are left
+            abilityUIImage.sprite = null;
         }
     }
 }

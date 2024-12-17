@@ -8,7 +8,6 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bulletPrefab;        // Bullet prefab for shooting
     public Transform firePoint;            // Point from where bullets are fired
     public float shootInterval = 0.5f;     // Time interval between subsequent shots
-    //public float bulletSpeed = 10f;        // Speed of the bullet
 
     private bool isShooting;               // Track if player is shooting
     private float shootTimer;              // Timer to manage shoot intervals
@@ -62,15 +61,6 @@ public class PlayerShooting : MonoBehaviour
             // Set the bullet's rotation to face the direction
             float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90)); // Adjust angle to point correctly
-
-            // Apply velocity to the bullet in the shoot direction
-            //Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            //if (rb != null)
-            //{
-            //    rb.velocity = shootDirection * bulletSpeed;
-            //}
-
-            Debug.Log("Shooting bullet in direction: " + shootDirection);
         }
     }
 }

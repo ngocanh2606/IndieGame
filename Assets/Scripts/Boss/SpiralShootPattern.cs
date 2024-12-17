@@ -12,7 +12,7 @@ public class SpiralShootPattern : IShootPattern
         {
             float currentAngle = angle + angleOffset + (i * 10f); // Increase the angle slightly for each shot to form a spiral
             GameObject projectile = GameObject.Instantiate(projectilePrefab, position, Quaternion.Euler(0, 0, currentAngle));
-            // You can apply some spiraling behavior to the projectile here
+            // Add movement to the projectile
         }
 
         angleOffset += 5f;  // Increase the spiral's angle for the next shot round

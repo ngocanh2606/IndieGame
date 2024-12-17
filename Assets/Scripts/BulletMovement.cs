@@ -29,11 +29,11 @@ public class BulletMovement : MonoBehaviour
         {
             // Apply damage or any other effect
             collision.gameObject.GetComponent<BossController>().TakeDamage(damage);
-            Destroy(gameObject); // Destroy projectile on hit
+            Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Ground"))
         {
-            Destroy(gameObject); // Destroy projectile on hit
+            Destroy(gameObject);
         }
     }
 }

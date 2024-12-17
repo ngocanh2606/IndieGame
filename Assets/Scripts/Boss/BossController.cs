@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class BossController : MonoBehaviour
 {
@@ -12,46 +13,59 @@ public class BossController : MonoBehaviour
     private IShootPattern currentShootPattern;                 // The current shooting pattern
 
     // Shooting pattern configurations
-    [SerializeField] private float patternChangeInterval = 2f; // Fire rate ime between shots)
+    [SerializeField] private float patternChangeInterval = 2f; // Fire rate time between shots
     private float lastPatternChangeTime;                       // Time of the last pattern change
 
     [SerializeField] private float baseFireRate = 0.5f;        // Base fire rate (time between shots)
     private float nextShootTime;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     [SerializeField] private GameManager gameManager;
 
+    [SerializeField] private Slider healthBar;  // Reference to the boss's health bar slider
 
     private void Start()
     {
-        PlayerHealth playerHealth = GetComponent<PlayerHealth>();
         gameManager = FindObjectOfType<GameManager>();
 
         currentHealth = maxHealth;                // Initialize health
         lastPatternChangeTime = Time.time;        // Set the initial pattern change time
         nextShootTime = Time.time;                // Initialize the shoot timer
         SetRandomShootPattern();                  // Initialize the first pattern
+
+        // Initialize the health bar
+        if (healthBar != null)
+        {
+            healthBar.maxValue = maxHealth;  // Set the max value of the slider
+            healthBar.value = currentHealth; // Set the current value of the slider
+        }
     }
 
     private void Update()
     {
         if (!PlayerHealth.isPlayerDead && !isDead)
         {
-            // Change the shooting pattern at regular interval
+            // Change the shooting pattern at regular intervals
             if (Time.time - lastPatternChangeTime >= patternChangeInterval)
             {
                 SetRandomShootPattern();           // Randomly change shooting pattern
                 lastPatternChangeTime = Time.time; // Update the last pattern change time
             }
 
-            //fire rate
+            // Fire rate management
             if (Time.time >= nextShootTime)
             {
                 // Shoot the current pattern
                 currentShootPattern.Shoot(shootPoint.position, 0f, 30f, 5, projectilePrefab);
                 nextShootTime = Time.time + baseFireRate;
             }
+        }
+
+        // Update the health bar
+        if (healthBar != null)
+        {
+            healthBar.value = currentHealth;
         }
     }
 
@@ -67,13 +81,11 @@ public class BossController : MonoBehaviour
         // Select shooting pattern based on health percentage and random roll
         if (healthPercentage > 0.6f)
         {
-            // Higher chance of selecting SpreadShootPattern at higher health
             currentShootPattern = roll < 0.7f ? (IShootPattern)new SpreadShootPattern() : new SpiralShootPattern();
         }
         else if (healthPercentage > 0.3f)
         {
-            // Allow a chance to roll all patterns
-            if (roll < 0.5f)  // 50% chance for SpreadShootPattern
+            if (roll < 0.5f)
             {
                 currentShootPattern = (IShootPattern)new SpreadShootPattern();
             }
@@ -100,6 +112,7 @@ public class BossController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            healthBar.value = currentHealth;
             Die();
         }
     }
@@ -109,6 +122,6 @@ public class BossController : MonoBehaviour
         if (isDead) return;  // Prevent multiple death triggers
         isDead = true;
 
-        gameManager.Win();
+        gameManager.Win();   // Call Win method from GameManager script
     }
 }

@@ -4,66 +4,66 @@ using UnityEngine;
 
 public class AbilitySpawner : MonoBehaviour
 {
-    public GameObject[] abilityPrefab; // Reference to the ability prefab
-    public float spawnRate; // Rate at which abilities spawn (in seconds)
+    public GameObject[] abilityPrefab;     // Ability prefabs to spawn
+    public float spawnRate;                // Rate at which abilities spawn (in seconds)
+    public float spawnHeightOffset = 10f;  // Height from which abilities will fall
+    public float horizontalPadding = 4.2f; // Padding to prevent spawning too close to screen edges
+    private Camera mainCamera;             // Reference to the main camera
 
-    public float spawnHeightOffset = 10f; // The height from which it will fall (in world space)
-    public float horizontalPadding = 4.2f; // Horizontal padding to prevent spawning too close to screen edges
-    private Camera mainCamera;
-
-    private PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;     // Reference to the player's health
+    private BossController bossController; // Reference to the boss controller
 
     private void Start()
     {
-        // Get the main camera reference
         mainCamera = Camera.main;
 
+        // Get player and boss references
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerHealth = player.GetComponent<PlayerHealth>();
         }
-
-        if (playerHealth != null && !playerHealth.isDead)
+        GameObject boss = GameObject.FindGameObjectWithTag("Enemy");
+        if (boss != null)
         {
-            InvokeRepeating("SpawnAbility", 0f, spawnRate);
+            bossController = boss.GetComponent<BossController>();
         }
 
-        float test = mainCamera.orthographicSize * 2f * mainCamera.aspect;
-
-        Debug.Log("ScreenWidth: " + test);
+        // Start spawning abilities if both player and boss are alive
+        if (playerHealth != null && bossController != null)
+        {
+            if (!playerHealth.isDead && !bossController.isDead)
+            {
+                InvokeRepeating("SpawnAbility", 0f, spawnRate);
+            }
+        }
     }
 
     private void Update()
     {
-        // If the player dies, stop the spawning
-        if (playerHealth != null && playerHealth.isDead)
+        // Stop spawning if player or boss is dead
+        if (playerHealth.isDead || bossController.isDead)
         {
-            CancelInvoke("SpawnAbility"); // Stop the spawn loop
-
+            CancelInvoke("SpawnAbility");
         }
         else if (!IsInvoking("SpawnAbility"))
         {
-            // If the player is alive, ensure spawning continues
             InvokeRepeating("SpawnAbility", 0f, spawnRate);
         }
     }
 
+    // Spawn ability at a random position above the screen
     private void SpawnAbility()
     {
-        // Get the screen width and height in world space
-        float screenWidth = mainCamera.orthographicSize * 2f * mainCamera.aspect; // For orthographic cameras (2D)
-        float screenHeight = mainCamera.orthographicSize * 2f; // For orthographic cameras (2D)
+        // Calculate screen width in world space
+        float screenWidth = mainCamera.orthographicSize * 2f * mainCamera.aspect;
+        float screenHeight = mainCamera.orthographicSize * 2f;
 
-        // Randomize the X position within the screen width minus the padding
         float randomX = Random.Range(-screenWidth / 2 + horizontalPadding, screenWidth / 2 - horizontalPadding);
-
-        // Spawn the ability just above the screen
-        Vector3 spawnPosition = new Vector3(randomX, spawnHeightOffset, 0f); // Y position can be adjusted depending on your needs
-
+        Vector3 spawnPosition = new Vector3(randomX, spawnHeightOffset, 0f); 
         int randomIndex = Random.Range(0, abilityPrefab.Length);
 
-        //Instantiate the ability prefab
+        // Instantiate the ability at the chosen position
         Instantiate(abilityPrefab[randomIndex], spawnPosition, Quaternion.identity);
     }
 }

@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();  // Get the Rigidbody2D component
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()

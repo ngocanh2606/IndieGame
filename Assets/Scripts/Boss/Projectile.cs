@@ -17,23 +17,21 @@ public class Projectile : MonoBehaviour
         // Move the projectile forward in the direction it's facing
         rb.velocity = transform.right * speed;
 
-        // Destroy after the lifetime expires
         Destroy(gameObject, lifetime);
     }
 
-    // Handle collision (this is an example, make sure you adjust for your specific needs)
+    // Handle collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Handle damage or destruction on collision
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Apply damage or any other effect
             collision.gameObject.GetComponent<PlayerHealth>().OnTakeDamage(damage);
-            Destroy(gameObject); // Destroy projectile on hit
+            Destroy(gameObject); 
         }
         else if (collision.gameObject.CompareTag("Ground"))
         {
-            Destroy(gameObject); // Destroy projectile on hit
+            Destroy(gameObject); 
         }
     }
 }
