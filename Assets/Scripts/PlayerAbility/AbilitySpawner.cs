@@ -8,7 +8,7 @@ public class AbilitySpawner : MonoBehaviour
     public float spawnRate = 2f; // Rate at which abilities spawn (in seconds)
 
     public float spawnHeightOffset = 10f; // The height from which it will fall (in world space)
-    public float horizontalPadding = 0.5f; // Horizontal padding to prevent spawning too close to screen edges
+    public float horizontalPadding = 4.5f; // Horizontal padding to prevent spawning too close to screen edges
     private Camera mainCamera;
 
     private PlayerHealth playerHealth;
