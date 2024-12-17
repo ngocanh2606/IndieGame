@@ -31,5 +31,9 @@ public class Projectile : MonoBehaviour
             collision.gameObject.GetComponent<PlayerHealth>().OnTakeDamage(damage);
             Destroy(gameObject); // Destroy projectile on hit
         }
+        else if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject); // Destroy projectile on hit
+        }
     }
 }

@@ -31,5 +31,9 @@ public class BulletMovement : MonoBehaviour
             collision.gameObject.GetComponent<BossController>().TakeDamage(damage);
             Destroy(gameObject); // Destroy projectile on hit
         }
+        else if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject); // Destroy projectile on hit
+        }
     }
 }
