@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed = 5f;
-    public float lifetime = 5f;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float lifetime = 5f;
     public int damage = 1;
 
     private Rigidbody2D rb;

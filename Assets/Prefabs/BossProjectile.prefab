@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 990585884253824899}
   m_Layer: 0
   m_Name: BossProjectile
-  m_TagString: Enemy
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3275823695345185366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f41fe624e9d9e4c9947f1089b5dc08, type: 3}
+  m_Script: {fileID: 11500000, guid: 00918ec9118358c41a34b86bfee636d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5

@@ -7,36 +7,45 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;      // The projectile to shoot
     [SerializeField] private Transform shootPoint;             // The point from which the boss shoots
     [SerializeField] private float maxHealth = 100f;           // The maximum health of the boss
-    private float currentHealth;              // The current health of the boss
+    private float currentHealth;                               // The current health of the boss
 
-    private IShootPattern currentShootPattern;  // The current shooting pattern
+    private IShootPattern currentShootPattern;                 // The current shooting pattern
 
     // Shooting pattern configurations
-    [SerializeField] private float patternChangeInterval = 2f;   // Fire rate ime between shots)
-    private float lastPatternChangeTime;        // Time of the last pattern change
+    [SerializeField] private float patternChangeInterval = 2f; // Fire rate ime between shots)
+    private float lastPatternChangeTime;                       // Time of the last pattern change
+
+    [SerializeField] private float baseFireRate = 0.5f;        // Base fire rate (time between shots)
+    private float nextShootTime;
 
     private void Start()
     {
         PlayerHealth playerHealth = GetComponent<PlayerHealth>();
 
-        currentHealth = maxHealth; // Initialize health
-        lastPatternChangeTime = Time.time; // Set the initial pattern change time
-        SetRandomShootPattern(); // Initialize the first pattern
+        currentHealth = maxHealth;                // Initialize health
+        lastPatternChangeTime = Time.time;        // Set the initial pattern change time
+        nextShootTime = Time.time;                // Initialize the shoot timer
+        SetRandomShootPattern();                  // Initialize the first pattern
     }
 
     private void Update()
     {
         if (!PlayerHealth.isPlayerDead)
         {
-            // Change the shooting pattern based on the boss's health at regular intervals or conditions
+            // Change the shooting pattern at regular interval
             if (Time.time - lastPatternChangeTime >= patternChangeInterval)
             {
-                SetRandomShootPattern(); // Randomly change shooting pattern
+                SetRandomShootPattern();           // Randomly change shooting pattern
                 lastPatternChangeTime = Time.time; // Update the last pattern change time
             }
 
-            // Shoot the current pattern
-            currentShootPattern.Shoot(shootPoint.position, 0f, 30f, 2, projectilePrefab);
+            //fire rate
+            if (Time.time >= nextShootTime)
+            {
+                // Shoot the current pattern
+                currentShootPattern.Shoot(shootPoint.position, 0f, 30f, 5, projectilePrefab);
+                nextShootTime = Time.time + baseFireRate;
+            }
         }
     }
 
@@ -64,13 +73,12 @@ public class BossController : MonoBehaviour
             }
             else
             {
-                // Otherwise, select between Spiral and Circular Shoot Patterns
                 currentShootPattern = roll < 0.75f ? (IShootPattern)new SpiralShootPattern() : new CircularShootPattern();
             }
         }
         else
         {
-            // At low health, more intense patterns like Spiral and Circular are favored
+            baseFireRate = 0.3f; // Faster fire rate
             currentShootPattern = roll < 0.5f ? (IShootPattern)new SpiralShootPattern() : new CircularShootPattern();
         }
 
