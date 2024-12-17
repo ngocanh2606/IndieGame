@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GravityFreeAbility : MonoBehaviour
 {
-    public float gravityFreeDuration = 5f; // Duration the gravity-free effect lasts
+    [SerializeField] private float gravityFreeDuration = 5f; // Duration the gravity-free effect lasts
     [System.NonSerialized] public bool isGravityFree = false;   // To track if the ability is currently active
 
     private Rigidbody2D rb;
@@ -35,7 +35,7 @@ public class GravityFreeAbility : MonoBehaviour
         yield return new WaitForSeconds(gravityFreeDuration);
 
         // Re-enable gravity after the ability duration
-        rb.gravityScale = 1;
+        rb.gravityScale = 3;
 
         Debug.Log("Gravity Free Ability Deactivated!");
 

@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;      // Position to check if player is grounded
     private bool isGrounded;           // Whether the player is on the ground
 
-    private Vector2 moveDirection = Vector2.zero;
+    [System.NonSerialized] public Vector2 moveDirection = Vector2.zero;
     private Rigidbody2D rb;
 
     void Start()
@@ -49,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
         {
             // Apply the jump force on the Y-axis
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            Debug.Log("Player Jumped!");
         }
     }
 }

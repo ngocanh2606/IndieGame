@@ -78,7 +78,8 @@ public class AbilityManager : MonoBehaviour
                 break;
 
             case AbilityType.GravityDash:
-                gravityDashAbility.Activate();
+                PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+                gravityDashAbility.Activate(playerMovement.moveDirection);
                 break;
         }
     }

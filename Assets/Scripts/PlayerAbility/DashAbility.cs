@@ -4,35 +4,37 @@ using UnityEngine;
 
 public class DashAbility : MonoBehaviour
 {
-    public float dashSpeed = 20f;
-    public float dashDuration = 0.2f;
-    private Rigidbody2D rb;
-    [System.NonSerialized] public bool isDashing = false;
+    [SerializeField] private float dashSpeed = 100f;       // Speed of the dash
+    [SerializeField] private float dashDuration = 1f;      // Duration of the dash
+    private Rigidbody2D rb;               // Rigidbody2D of the player
+    [System.NonSerialized] public bool isDashing = false; // To track if the player is dashing
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Assumes the script is attached to the same GameObject as the Rigidbody
+        rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
     }
 
-    public void Activate()
+    public void Activate(Vector2 dashDirection)
     {
-        StartCoroutine(Dash());
+        // Start the dash coroutine and pass the dash direction as a parameter
+        StartCoroutine(Dash(dashDirection));
     }
 
-    private IEnumerator Dash()
+    private IEnumerator Dash(Vector2 dashDirection)
     {
+        // Mark the player as dashing
         isDashing = true;
-        Vector3 dashDirection = transform.forward; // Modify based on desired input direction
+
+        // Set the player's velocity to the dash direction * dash speed
         rb.velocity = dashDirection * dashSpeed;
 
-        Debug.Log("Gravity Dash Ability Activated!");
-
+        // Wait for the duration of the dash
         yield return new WaitForSeconds(dashDuration);
 
-        rb.velocity = Vector3.zero; // Reset velocity after dash
+        // Reset the player's velocity after the dash is complete
+        rb.velocity = Vector2.zero; // Using Vector2 because it's a 2D game
+
+        // Mark the player as no longer dashing
         isDashing = false;
-
-        Debug.Log("Gravity Dash Ability Deactivated!");
-
     }
 }

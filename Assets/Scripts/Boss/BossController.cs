@@ -18,9 +18,15 @@ public class BossController : MonoBehaviour
     [SerializeField] private float baseFireRate = 0.5f;        // Base fire rate (time between shots)
     private float nextShootTime;
 
+    private bool isDead = false;
+
+    [SerializeField] private GameManager gameManager;
+
+
     private void Start()
     {
         PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+        gameManager = FindObjectOfType<GameManager>();
 
         currentHealth = maxHealth;                // Initialize health
         lastPatternChangeTime = Time.time;        // Set the initial pattern change time
@@ -30,7 +36,7 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerHealth.isPlayerDead)
+        if (!PlayerHealth.isPlayerDead && !isDead)
         {
             // Change the shooting pattern at regular interval
             if (Time.time - lastPatternChangeTime >= patternChangeInterval)
@@ -91,5 +97,18 @@ public class BossController : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0); // Ensure health doesn't go below 0
         Debug.Log("Boss health: " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        if (isDead) return;  // Prevent multiple death triggers
+        isDead = true;
+
+        gameManager.Win();
     }
 }

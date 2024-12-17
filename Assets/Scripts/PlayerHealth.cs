@@ -14,9 +14,12 @@ public class PlayerHealth : MonoBehaviour
     public bool isDead = false;
     public static bool isPlayerDead = false;
 
+    [SerializeField] private GameManager gameManager;
+
     void Start()
     {
         currentHealth = maxHealth;      // Initialize current health to max health
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -50,7 +53,6 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return; // Don't take damage if player is dead
         currentHealth -= damageAmount;
         currentHealth = Mathf.Max(currentHealth, 0); // Ensure health doesn't go below 0
-        Debug.Log("Player took damage: " + damageAmount + ", Current Health: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -63,36 +65,9 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;  // Prevent multiple death triggers
         isDead = true;
         isPlayerDead = true;
-        //death anim here
-        Debug.Log("Player has died!");
-        DisablePlayerMovement();
-        //trigger game over screen
+
+        gameManager.Lose();
     }
 
-    private void DisablePlayerMovement()
-    {
-        PlayerController playerController = GetComponent<PlayerController>();
-        if (playerController != null)
-        {
-            playerController.enabled = false;  
-        }
-
-        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = false;
-        }
-
-        AbilityManager abilityManager = GetComponent<AbilityManager>();
-        if (abilityManager != null)
-        {
-            abilityManager.enabled = false;
-        }
-
-        PlayerShooting playerShooting = GetComponent<PlayerShooting>();
-        if (playerShooting != null)
-        {
-            playerShooting.enabled = false; 
-        }
-    }
+  
 }

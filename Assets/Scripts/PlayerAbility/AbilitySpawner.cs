@@ -5,10 +5,10 @@ using UnityEngine;
 public class AbilitySpawner : MonoBehaviour
 {
     public GameObject[] abilityPrefab; // Reference to the ability prefab
-    public float spawnRate = 2f; // Rate at which abilities spawn (in seconds)
+    public float spawnRate; // Rate at which abilities spawn (in seconds)
 
     public float spawnHeightOffset = 10f; // The height from which it will fall (in world space)
-    public float horizontalPadding = 4.5f; // Horizontal padding to prevent spawning too close to screen edges
+    public float horizontalPadding = 4.2f; // Horizontal padding to prevent spawning too close to screen edges
     private Camera mainCamera;
 
     private PlayerHealth playerHealth;
@@ -28,6 +28,10 @@ public class AbilitySpawner : MonoBehaviour
         {
             InvokeRepeating("SpawnAbility", 0f, spawnRate);
         }
+
+        float test = mainCamera.orthographicSize * 2f * mainCamera.aspect;
+
+        Debug.Log("ScreenWidth: " + test);
     }
 
     private void Update()

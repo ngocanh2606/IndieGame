@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
         AddEventTrigger(rightButton.gameObject, OnRightButtonDown, EventTriggerType.PointerDown);
         AddEventTrigger(rightButton.gameObject, OnButtonUp, EventTriggerType.PointerUp);
 
-        // Add event listener for the jump button
-        jumpButton.onClick.AddListener(OnJumpButtonPressed);
+        // Add event listener for the jump button using PointerDown
+        AddEventTrigger(jumpButton.gameObject, OnJumpButtonPressed, EventTriggerType.PointerDown);
     }
 
     void Update()
@@ -69,7 +69,8 @@ public class PlayerController : MonoBehaviour
         moveRight = false;
     }
 
-    private void OnJumpButtonPressed()
+    // Jump triggered on PointerDown, as soon as the button is pressed
+    private void OnJumpButtonPressed(BaseEventData data)
     {
         // Trigger jump action in PlayerMovement
         playerMovement.Jump();
