@@ -7,28 +7,41 @@ public class GravityFreeAbility : MonoBehaviour
     [SerializeField] private float gravityFreeDuration = 5f;    // Duration the gravity-free effect lasts
     [System.NonSerialized] public bool isGravityFree = false;   // To track if the ability is currently active
 
-    private Rigidbody2D rb;
+    private float originalJumpForce;
+    [SerializeField] private float jumpForceMultiplier = 1.5f;
+    private PlayerMovement playerMovement;  // Reference to PlayerMovement script
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        playerMovement = GetComponent<PlayerMovement>();  // Ensure to get the reference to the PlayerMovement script
+        if (playerMovement == null)
+        {
+            Debug.LogError("PlayerMovement script not found on this object.");
+        }
+        originalJumpForce = playerMovement.jumpForce;
     }
 
     public void Activate()
     {
-        StartCoroutine(GravityFreeEffect());
+        if (playerMovement != null)
+        {
+            StartCoroutine(GravityFreeEffect());
+        }
     }
 
     private IEnumerator GravityFreeEffect()
     {
         isGravityFree = true;
-        rb.gravityScale = 1; // Weaker gravity => Jump higher
+
+        // Increase the jump force to simulate higher jumps
+        playerMovement.jumpForce *= jumpForceMultiplier;  // Increase the jump force
 
         // Wait for the duration of the ability
         yield return new WaitForSeconds(gravityFreeDuration);
 
-        // Re-enable initial gravity value after the ability duration
-        rb.gravityScale = 3;
+        // Restore the jump force to its original value
+        playerMovement.jumpForce = originalJumpForce;
+
         isGravityFree = false;
     }
 }

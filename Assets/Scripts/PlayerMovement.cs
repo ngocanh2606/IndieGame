@@ -10,8 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;      // Position to check if player is grounded
     private bool isGrounded;           // Whether the player is on the ground
 
-    //public Vector2 gravityDirection = Vector2.down;
-
     [System.NonSerialized] public Vector2 moveDirection = Vector2.zero;
     private Rigidbody2D rb;
 
@@ -57,11 +55,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
-            // Apply the jump force on the Y-axis
-            //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
-            // Apply the jump force in the opposite direction of gravity
-            //Vector2 jumpDirection = -gravityDirection.normalized;  // Opposite of gravity direction
             rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset the vertical velocity to avoid double jumping
             rb.AddForce(-gravityScript.gravityDirection * jumpForce, ForceMode2D.Impulse);  // Apply the jump force in the opposite direction of gravity
             Debug.Log("jump");

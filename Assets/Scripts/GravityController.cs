@@ -23,12 +23,6 @@ public class GravityController : MonoBehaviour
         StartCoroutine(GravityShift());
     }
 
-    //void Update ()
-    //{
-    //    // Apply the gravity force in the new gravity direction continuously
-    //    playerRigidbody.AddForce(gravityDirection * gravityStrength, ForceMode2D.Force);
-    //}
-
     // Coroutine to periodically change gravity
     IEnumerator GravityShift()
     {
@@ -38,7 +32,6 @@ public class GravityController : MonoBehaviour
             ChangeGravity();
         }
     }
-
 
     // Function to randomly change gravity direction
     void ChangeGravity()

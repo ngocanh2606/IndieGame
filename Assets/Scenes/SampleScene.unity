@@ -7272,7 +7272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 25
+  jumpForce: 8
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -7420,7 +7420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9094ff916c36e1c43b038a77bfa81cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 100
   regenerationRate: 1
   regenerationInterval: 5
   isDead: 0
@@ -7473,6 +7473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityFreeDuration: 5
+  jumpForceMultiplier: 1.5
 --- !u!114 &1702471040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8080,7 +8081,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978669503}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb4d8a8f3f2f32349826e4ff5e395005, type: 3}
   m_Name: 
