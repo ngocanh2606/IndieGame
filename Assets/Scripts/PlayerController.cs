@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private bool moveLeft;                  // Track if left button is being held
     private bool moveRight;                 // Track if right button is being held
+    private bool jump;
 
     void Start()
     {
@@ -42,6 +43,12 @@ public class PlayerController : MonoBehaviour
         else
         {
             playerMovement.StopMoving(); // Stop moving when neither button is held
+        }
+
+        if (jump)
+        {
+            playerMovement.Jump(playerMovement.gravityDirection);
+            jump=false;
         }
     }
 
@@ -76,6 +83,6 @@ public class PlayerController : MonoBehaviour
     // Handle jump button press
     private void OnJumpButtonPressed(BaseEventData data)
     {
-        playerMovement.Jump();
+        jump= true;
     }
 }
