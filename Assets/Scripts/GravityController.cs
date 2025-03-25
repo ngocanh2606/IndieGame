@@ -10,13 +10,14 @@ public class GravityController : MonoBehaviour
     public Transform playerTransform;         // Player's Transform to rotate accordingly
 
     public Vector2 gravityDirection = Vector2.down;         // Current gravity direction
+    public Vector2 gravityForce;
 
     void Start()
     {
         // Initialize with a random gravity direction
         //ChangeGravity();
 
-        Vector2 gravityForce = Vector2.down * (9.81f * gravityStrength);
+        gravityForce = Vector2.down * gravityStrength;
         playerRigidbody.AddForce(gravityForce, ForceMode2D.Force);
 
         StartCoroutine(GravityShift());
@@ -68,14 +69,10 @@ public class GravityController : MonoBehaviour
     // Apply the gravity force and rotate the player accordingly
     void ApplyGravity()
     {
-        // Set the gravity direction for the player
         playerRigidbody.velocity = Vector2.zero; // Reset velocity to avoid leftover movement
 
-        //// Apply the gravity force in the new gravity direction continuously
-        //playerRigidbody.AddForce(gravityDirection * gravityStrength, ForceMode2D.Force);
-
         // Apply gravity force in the new direction, considering the player's gravityScale
-        Vector2 gravityForce = gravityDirection * (9.81f * gravityStrength);
+        gravityForce = gravityDirection * gravityStrength;
 
         // Apply the gravity force to the player
         playerRigidbody.AddForce(gravityForce, ForceMode2D.Force);

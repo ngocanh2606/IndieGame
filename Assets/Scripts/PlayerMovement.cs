@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;      // Position to check if player is grounded
     private bool isGrounded;           // Whether the player is on the ground
 
-    public Vector2 gravityDirection = Vector2.down;
+    //public Vector2 gravityDirection = Vector2.down;
 
     [System.NonSerialized] public Vector2 moveDirection = Vector2.zero;
     private Rigidbody2D rb;
@@ -28,18 +28,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // Get the gravity direction from the GravityController script
-        gravityDirection = gravityScript.gravityDirection;
+        if (gravityScript == null) return;
 
         // Check if the player is grounded using a small circle overlap at the groundCheck position
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
-        // Apply normal movement
-        transform.Translate(moveDirection * speed * Time.deltaTime);
+        //ApplyGravity()
 
-        //ApplyGravity(gravityDirection);
+        // Apply normal movement
+        transform.Translate(moveDirection * speed * Time.fixedDeltaTime);
+
+        ApplyGravity();
     }
 
     public void SetMoveDirection(Vector2 direction)
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = Vector2.zero;
     }
 
-    public void Jump(Vector2 gravityDirection)
+    public void Jump()
     {
         if (isGrounded)
         {
@@ -60,15 +61,16 @@ public class PlayerMovement : MonoBehaviour
             //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
             // Apply the jump force in the opposite direction of gravity
-            Vector2 jumpDirection = -gravityDirection.normalized;  // Opposite of gravity direction
+            //Vector2 jumpDirection = -gravityDirection.normalized;  // Opposite of gravity direction
             rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset the vertical velocity to avoid double jumping
-            rb.AddForce(jumpDirection * 1, ForceMode2D.Impulse);  // Apply the jump force in the opposite direction of gravity
+            rb.AddForce(-gravityScript.gravityDirection * jumpForce, ForceMode2D.Impulse);  // Apply the jump force in the opposite direction of gravity
+            Debug.Log("jump");
         }
     }
 
-    //public void ApplyGravity(Vector2 gravityDirection)
-    //{
-    //    // Apply gravity force (opposite of gravity direction) based on gravity scale
-    //    rb.AddForce(gravityDirection * gravityScript.gravityStrength, ForceMode2D.Force);  // Continuous gravity force
-    //}
+    public void ApplyGravity()
+    {
+        // Apply gravity force (opposite of gravity direction) based on gravity scale
+        rb.AddForce(gravityScript.gravityForce, ForceMode2D.Force);  // Continuous gravity force
+    }
 }
