@@ -24,10 +24,14 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameManager gameManager;
 
     [SerializeField] private Slider healthBar;  // Reference to the boss's health bar slider
+    private Projectile bossBullet;
+    private float initialDamage;
+    [SerializeField] private float damageMultiplier = 1.5f;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        initialDamage = bossBullet.damage;
 
         currentHealth = maxHealth;                // Initialize health
         lastPatternChangeTime = Time.time;        // Set the initial pattern change time
@@ -85,6 +89,7 @@ public class BossController : MonoBehaviour
         }
         else if (healthPercentage > 0.3f)
         {
+            bossBullet.damage = initialDamage * damageMultiplier;
             if (roll < 0.5f)
             {
                 currentShootPattern = (IShootPattern)new SpreadShootPattern();
@@ -96,6 +101,7 @@ public class BossController : MonoBehaviour
         }
         else
         {
+            bossBullet.damage = initialDamage * damageMultiplier * damageMultiplier;
             baseFireRate = 0.3f; // Faster fire rate
             currentShootPattern = roll < 0.5f ? (IShootPattern)new SpiralShootPattern() : new CircularShootPattern();
         }
