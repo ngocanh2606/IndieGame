@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class SpiralShootPattern : IShootPattern
 {
-    private float angleOffset = 0f;
+    private float angleOffset = 0;
+    private float angleOffsetAdd = 30f;
 
+    //player pos,3, 30
     public void Shoot(Vector3 position, float angle, float spreadAngle, int projectileCount, GameObject projectilePrefab)
     {
         for (int i = 0; i < projectileCount; i++)
@@ -15,6 +17,6 @@ public class SpiralShootPattern : IShootPattern
             // Add movement to the projectile
         }
 
-        angleOffset += 5f;  // Increase the spiral's angle for the next shot round
+        angleOffset += angleOffsetAdd;  // Increase the spiral's angle for the next shot round
     }
 }

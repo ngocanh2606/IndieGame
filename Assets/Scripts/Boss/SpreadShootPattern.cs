@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class SpreadShootPattern : IShootPattern
 {
+    private int offset = 10;
+
+    //player pos, 20, 5
     public void Shoot(Vector3 position, float angle, float spreadAngle, int projectileCount, GameObject projectilePrefab)
     {
+        // Make the second shot go in the opposite direction, then randomize the offset again
+        if (offset < 0)
+        {
+            offset = Random.Range(1, 10);
+        }
+        else
+        {
+            offset = -offset; // Reverse the offset direction
+        }
+
         for (int i = 0; i < projectileCount; i++)
         {
-            float currentAngle = angle + (i - (projectileCount - 1) / 2f) * spreadAngle; // Calculate the angle for each shot
+            float currentAngle = angle + (i - (projectileCount - 1) / 2f) * spreadAngle + offset; // Calculate the angle for each shot
             GameObject projectile = GameObject.Instantiate(projectilePrefab, position, Quaternion.Euler(0, 0, currentAngle));
-            // Add movement to the projectile
         }
     }
 }

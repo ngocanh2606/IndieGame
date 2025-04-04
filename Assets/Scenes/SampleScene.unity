@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 212, y: 77}
+  m_AnchoredPosition: {x: 212, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267673017
@@ -6338,7 +6338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -661.1061, y: 77}
+  m_AnchoredPosition: {x: -661.1061, y: 0}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389552493
@@ -6472,7 +6472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 442.9687, y: 77}
+  m_AnchoredPosition: {x: 442.9687, y: 0}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447744401
@@ -8086,14 +8086,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4d8a8f3f2f32349826e4ff5e395005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1788453020}
+  player: {fileID: 1702471032}
+  healthBar: {fileID: 1487059142}
+  maxHealth: 100
+  isDead: 0
+  patternChangeInterval: 5
+  fireCooldownTime: 0.5
   projectilePrefab: {fileID: 3275823695345185366, guid: 2df11bb862d964a4cabe9ff7a2679512, type: 3}
   shootPoint: {fileID: 1978669505}
-  maxHealth: 100
-  patternChangeInterval: 4
-  baseFireRate: 0.5
-  isDead: 0
-  gameManager: {fileID: 1788453020}
-  healthBar: {fileID: 1487059142}
+  damageMultiplier: 1.5
 --- !u!61 &1978669507
 BoxCollider2D:
   m_ObjectHideFlags: 0
