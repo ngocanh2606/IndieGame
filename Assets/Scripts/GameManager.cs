@@ -3,38 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI winText;  
     [SerializeField] private TextMeshProUGUI loseText; 
+    [SerializeField] private Button mainMenuButton; 
+    [SerializeField] private GameObject joystick; 
 
     [SerializeField] private Button[] actionButtons;
-    [SerializeField] private GameObject player;
+
 
     // Method to call when the player loses
     public void Lose()
     {
-        DisableScene();
         ShowLoseText();
+        GameEnd();
     }
 
     // Method to call when the player wins
     public void Win()
     {
-        DisableScene();
         ShowWinText();
+        GameEnd();
+    }
+
+    private void GameEnd()
+    {
+        // Disable player movement and other actions
+        DisableScene();
+        ShowMainMenuButton();
     }
 
     // Disable player movement and other actions
     private void DisableScene()
     {
-        player.SetActive(false);
+        DestroyAllBullets();
+
+        DestroyAllCollectibles();
 
         AbilityManager abilityManager = FindObjectOfType<AbilityManager>();
         if (abilityManager != null)
         {
             abilityManager.enabled = false;
+        }
+
+        GravityController gravityController = FindObjectOfType<GravityController>();
+        if (gravityController != null)
+        {
+            gravityController.enabled = false;
+        }
+
+        PlayerShooting playerShooting = FindObjectOfType<PlayerShooting>();
+        if (playerShooting != null)
+        {
+            playerShooting.enabled = false;
+        }
+
+        if (joystick != null)
+        {
+            joystick.SetActive(false);
         }
 
         // Loop through each button in the array and disable it
@@ -63,5 +92,38 @@ public class GameManager : MonoBehaviour
         {
             loseText.gameObject.SetActive(true);
         }
+    }
+
+    private void ShowMainMenuButton()
+    {
+        if (mainMenuButton != null)
+        {
+            mainMenuButton.gameObject.SetActive(true);
+        }
+
+    }
+
+    private void DestroyAllBullets()
+    {
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+
+        foreach (GameObject bullet in bullets)
+        {
+            Destroy(bullet);
+        }
+    }
+
+    private void DestroyAllCollectibles()
+    {
+        GameObject[] collectibles = GameObject.FindGameObjectsWithTag("Collectible");
+        foreach (GameObject collectible in collectibles)
+        {
+            Destroy(collectible);
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu"); // Replace with your actual game scene name
     }
 }

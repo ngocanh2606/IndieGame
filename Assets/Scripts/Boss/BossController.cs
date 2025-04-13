@@ -38,6 +38,7 @@ public class BossController : MonoBehaviour
 
     private void Start()
     {
+        isDead = false;
         bossBullet = projectilePrefab.GetComponent<Projectile>();  // Assuming Projectile is a script attached to the prefab
         gameManager = FindObjectOfType<GameManager>();
 

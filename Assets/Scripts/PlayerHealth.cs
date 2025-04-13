@@ -20,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        isDead = false;  // Initialize dead state
+        isPlayerDead = isDead;
         currentHealth = maxHealth;           // Initialize current health to max health
         gameManager = FindObjectOfType<GameManager>();
 
@@ -79,7 +81,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isDead) return;  // Prevent multiple death triggers
         isDead = true;
-        isPlayerDead = true;
+        isPlayerDead = isDead;
 
         gameManager.Lose();  // Call Lose method from GameManager script
     }
