@@ -20,6 +20,8 @@ public class AbilityManager : MonoBehaviour
         public Sprite sprite; 
     }
 
+    private PlayerAnimation playerAnimation;
+
     public Image abilityUIImage;                                   // UI Image component to display the ability icon
     public List<Ability> abilityDefinitions = new List<Ability>(); // List of defined abilities (collected abilities)
     private Stack<Ability> abilityStack = new Stack<Ability>();    // Stack to store abilities that the player has collected
@@ -27,6 +29,11 @@ public class AbilityManager : MonoBehaviour
     // References to the actual ability scripts for GravityFree and Dash
     public GravityFreeAbility gravityFreeAbility;
     public DashAbility gravityDashAbility;
+
+    private void Awake()
+    {
+        playerAnimation = GetComponent<PlayerAnimation>();
+    }
 
     void Start()
     {
@@ -77,6 +84,7 @@ public class AbilityManager : MonoBehaviour
 
             case AbilityType.GravityDash:
                 PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+                playerAnimation.SetState(PlayerCharacterState.Dash);
                 gravityDashAbility.Activate(playerMovement.moveDirection);
                 break;
         }

@@ -10,21 +10,30 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI winText;  
     [SerializeField] private TextMeshProUGUI loseText; 
     [SerializeField] private Button mainMenuButton; 
-    [SerializeField] private GameObject joystick; 
+    [SerializeField] private GameObject[] gameObjects; 
+    [SerializeField] private GameObject playerCharacter; 
 
     [SerializeField] private Button[] actionButtons;
+
+    [SerializeField] private PlayerAnimation playerAnimation;
+
+    private bool isWin;
+
 
 
     // Method to call when the player loses
     public void Lose()
     {
-        ShowLoseText();
-        GameEnd();
+        playerAnimation.SetState(PlayerCharacterState.Die);
+        StartCoroutine(WaitForDeathAnimation());
+
     }
 
     // Method to call when the player wins
     public void Win()
     {
+        isWin = true;
+        playerAnimation.SetState(PlayerCharacterState.Win);
         ShowWinText();
         GameEnd();
     }
@@ -39,6 +48,7 @@ public class GameManager : MonoBehaviour
     // Disable player movement and other actions
     private void DisableScene()
     {
+
         DestroyAllBullets();
 
         DestroyAllCollectibles();
@@ -61,9 +71,9 @@ public class GameManager : MonoBehaviour
             playerShooting.enabled = false;
         }
 
-        if (joystick != null)
+        foreach (GameObject gameObject in gameObjects)
         {
-            joystick.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         // Loop through each button in the array and disable it
@@ -125,5 +135,13 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenu"); // Replace with your actual game scene name
+    }
+
+    public IEnumerator WaitForDeathAnimation()
+    {
+        yield return new WaitForSeconds(0.917f);
+        Destroy (playerCharacter);
+        ShowLoseText();
+        GameEnd();
     }
 }

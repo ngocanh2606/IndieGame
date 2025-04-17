@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private bool moveLeft;                  // Track if left button is being held
     private bool moveRight;                 // Track if right button is being held
-    private bool jump=false;
+    private bool jump = false;
 
     void Start()
     {
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
         // Add event listener for the jump button using PointerDown
         AddEventTrigger(jumpButton.gameObject, OnJumpButtonPressed, EventTriggerType.PointerDown);
+
     }
 
     void Update()
@@ -40,9 +41,10 @@ public class PlayerController : MonoBehaviour
         {
             playerMovement.SetMoveDirection(Vector2.right);
         }
+
         else
         {
-            playerMovement.StopMoving(); // Stop moving when neither button is held
+            playerMovement.StopMoving();
         }
 
         if (jump)

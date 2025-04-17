@@ -9,7 +9,7 @@ public class PlayerShooting : MonoBehaviour
     public Transform firePoint;            // Point from where bullets are fired
     public float shootInterval = 0.5f;     // Time interval between subsequent shots
 
-    private bool isShooting;               // Track if player is shooting
+    [System.NonSerialized] public bool isShooting;               // Track if player is shooting
     private float shootTimer;              // Timer to manage shoot intervals
     private bool firstShot;                // Track the first shot on touch
 
@@ -62,5 +62,10 @@ public class PlayerShooting : MonoBehaviour
             float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90)); // Adjust angle to point correctly
         }
+    }
+
+    public bool IsShooting()
+    {
+        return isShooting;
     }
 }

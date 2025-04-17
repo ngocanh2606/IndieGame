@@ -18,6 +18,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameManager gameManager;          // Reference to the GameManager script
     [SerializeField] private Slider healthBar;                 // Reference to the UI Slider (Health Bar)
 
+    private PlayerAnimation playerAnimation;
+
+    private void Awake()
+    {
+        playerAnimation = GetComponent<PlayerAnimation>();
+    }
+
     void Start()
     {
         isDead = false;  // Initialize dead state
@@ -67,6 +74,8 @@ public class PlayerHealth : MonoBehaviour
     public void OnTakeDamage(float damageAmount)
     {
         if (isDead) return;
+
+        playerAnimation.SetState(PlayerCharacterState.TakeDamage);
         currentHealth -= damageAmount;
         currentHealth = Mathf.Max(currentHealth, 0); // Ensure health doesn't go below 0
 

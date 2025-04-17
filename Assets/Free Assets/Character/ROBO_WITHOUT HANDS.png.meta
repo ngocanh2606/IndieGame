@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eb003b0f225ba974d945ac549424c418
+guid: b137486fc2efa2d4ca1066f176573b5a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,904 +136,841 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ROBO WITH HANDS_0
+      name: ROBO_WITHOUT HANDS_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 192
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acd212d9f96a3314e89090edd485ace8
-      internalID: -2101459962
+      spriteID: 8cb45708038664c4abafb79ac8fdd9ef
+      internalID: 997904918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_1
+      name: ROBO_WITHOUT HANDS_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 320
+        y: 192
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6436cca1cc952b468a691b4a5c2747e
-      internalID: 1510292118
+      spriteID: 099610ca6528b8a478d2ebf6c4de288d
+      internalID: 485160185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_2
+      name: ROBO_WITHOUT HANDS_2
       rect:
         serializedVersion: 2
         x: 64
-        y: 320
+        y: 192
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 204b5e3ca57559246bb710b145e5c3f3
-      internalID: 1864145706
+      spriteID: 1f21ddd0b36cf4f488262bd1554f078e
+      internalID: 1203019483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_3
+      name: ROBO_WITHOUT HANDS_3
       rect:
         serializedVersion: 2
         x: 96
-        y: 320
+        y: 192
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb02feb01155fe24aa2fb5988f989619
-      internalID: 1582359080
+      spriteID: 5c40f25cac129574996e80d81d8d3f8f
+      internalID: -1584604913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_4
+      name: ROBO_WITHOUT HANDS_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 288
+        y: 160
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9843e3a58ec7cf64985c59747e2e0a7c
-      internalID: 1436945623
+      spriteID: 5461bbf101d11384189651c3199a6b93
+      internalID: 1444334013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_5
+      name: ROBO_WITHOUT HANDS_5
       rect:
         serializedVersion: 2
         x: 32
-        y: 288
+        y: 160
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e977bf3832d67cd4ebf48fc691597b44
-      internalID: 442079178
+      spriteID: 25bf3b8108451504f92e2af8721f81ab
+      internalID: -518546242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_6
+      name: ROBO_WITHOUT HANDS_6
       rect:
         serializedVersion: 2
         x: 64
-        y: 288
+        y: 160
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c0f9c6e30a7d8f4eab81ce0f4db89c7
-      internalID: -718525921
+      spriteID: 5f27b5e08ca4a4741a4dee6e106fcb80
+      internalID: -829471499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_7
+      name: ROBO_WITHOUT HANDS_7
       rect:
         serializedVersion: 2
         x: 96
-        y: 288
+        y: 160
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99007bbea3596c34488b679921707077
-      internalID: -2136224871
+      spriteID: bf9e46506f892d544af68a05fd866bf9
+      internalID: -810588030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_8
+      name: ROBO_WITHOUT HANDS_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 128
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 337bd0be2b3216c4ea534cf135249891
-      internalID: 1163548112
+      spriteID: 0b378c8b7aa93054da3f86a477c6207d
+      internalID: -301021959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_9
+      name: ROBO_WITHOUT HANDS_9
       rect:
         serializedVersion: 2
         x: 32
-        y: 256
+        y: 128
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec1f92bbe9d4c88489cfd5f42d02b1f1
-      internalID: -551054142
+      spriteID: 1f1defeef4eb48641af583114564e57a
+      internalID: 1491152443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_10
+      name: ROBO_WITHOUT HANDS_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5905f669e338264aa84c44873cc81e9
+      internalID: 562536179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a717f2ea21e5e744a8ed358d1be5b92f
+      internalID: 624508563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_12
       rect:
         serializedVersion: 2
         x: 64
-        y: 256
+        y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9881c93ed2421064490978af879dc448
-      internalID: 1808249988
+      spriteID: b54b6ea8e45e0d745801f6d111889af3
+      internalID: -767964631
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_11
+      name: ROBO_WITHOUT HANDS_13
       rect:
         serializedVersion: 2
         x: 96
-        y: 256
+        y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fb5843478bcf2041b13cd79599678e4
-      internalID: -1393821679
+      spriteID: 3b5cd983e76406443b5ce55325338155
+      internalID: -2044574724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_12
+      name: ROBO_WITHOUT HANDS_14
       rect:
         serializedVersion: 2
         x: 128
-        y: 256
+        y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5275a663da34dbb438a27a999d5df44c
-      internalID: 1534117642
+      spriteID: 03fce9a6d976a8e4d802b17a885fce56
+      internalID: -277973316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_13
+      name: ROBO_WITHOUT HANDS_15
       rect:
         serializedVersion: 2
         x: 160
-        y: 256
+        y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bb4d86e179fc6047b26e3feeb07b07b
-      internalID: -467939836
+      spriteID: 19a8694ca871a3e48a21b5210bfacba6
+      internalID: -1383159977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_14
+      name: ROBO_WITHOUT HANDS_16
       rect:
         serializedVersion: 2
         x: 192
-        y: 256
+        y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4576c9299b9bfb9448b4112edee9c93e
-      internalID: 1988198228
+      spriteID: ab752ce8c38570e40a430694179c39ce
+      internalID: -1525174993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_15
+      name: ROBO_WITHOUT HANDS_17
       rect:
         serializedVersion: 2
         x: 224
-        y: 256
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9dc695ff0c9e15f419ed56270181844f
-      internalID: 1874121024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_16
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f368b988df29c647bc41f8eead2fd37
-      internalID: -889282095
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_17
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08b4749db71a87d4ba96bafc2e5ad599
-      internalID: 1529086054
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_18
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4638770ddc70e7349ad56e9b089436da
-      internalID: -1016714820
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_19
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46462d9c0db51f64c8b3e3a1156cd439
-      internalID: 989824073
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_20
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 192
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5534b5a3668f9454e90de4d65e6b0762
-      internalID: 1365238324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_21
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2474ff97691650248a2039f9cabe87b4
-      internalID: 2047175624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_22
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ff85804c405fed4283cb9464ac68bcc
-      internalID: 156525819
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_23
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58c1c74867619414eae19f30da89ca38
-      internalID: 127647372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_24
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1604d41795ef35043874283ae9c26fc9
-      internalID: 957440997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_25
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 31654d68b91662249a6a021c0deafa5d
-      internalID: -435362303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_26
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5daa92f9e359ba40bfeb7f2449919aa
-      internalID: -995474126
+      spriteID: 6515e2fefa67a3c4e842e8bdb1d83426
+      internalID: 987579660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_27
+      name: ROBO_WITHOUT HANDS_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbdf3ff75b81426408c1f0b1878b7d48
+      internalID: -1636258983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_19
       rect:
         serializedVersion: 2
         x: 32
-        y: 96
+        y: 64
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd60fd7268809c54381003937bd00182
-      internalID: 2110700487
+      spriteID: 72cae5545fd7fbb4c99685f37b0d4499
+      internalID: -32359659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_28
+      name: ROBO_WITHOUT HANDS_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10fb16a223775c247b7d23ff321e5b35
+      internalID: -1171577449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed96953e562d4914d8dbea51709f8865
+      internalID: -1582644155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_22
       rect:
         serializedVersion: 2
         x: 64
-        y: 96
+        y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 100a35d2000dfe04aa8cd79fe45c211f
-      internalID: -1083141399
+      spriteID: e1e4b8e4b47eda34dbc24da6036b95a4
+      internalID: -1163993996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_29
+      name: ROBO_WITHOUT HANDS_23
       rect:
         serializedVersion: 2
         x: 96
-        y: 96
+        y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f943e95cffa9dee4c9581fb8f9ee1ce0
-      internalID: 748485631
+      spriteID: 1aacc34523fc1484089ae2235bf7c228
+      internalID: 1706855362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_30
+      name: ROBO_WITHOUT HANDS_24
       rect:
         serializedVersion: 2
         x: 128
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7c467a9be3fab845821f0133fbb773b
-      internalID: 363922383
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_31
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7aa8e018d2fc1b746a526c023f788230
-      internalID: 95480555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_32
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92267b7d71e8bb64cbbdc70663ffcc3c
-      internalID: 957235928
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_33
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e721c7e614721ce40b7469a98926a6b7
-      internalID: 1845476695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_34
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e5b89dba5e14534190b9247fff0fe08
-      internalID: -1851717069
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_35
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d9d8594ff0c3fd4e89f10667275960a
-      internalID: 1550842336
+      spriteID: 9dd8cdc4c492aea409fdce217b5bec9e
+      internalID: -368327466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_36
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25f5c0904f27c1942bf669a49f5192a5
-      internalID: -522571619
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_37
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e782b7fb1c3ffb649910e475dd74ea3d
-      internalID: 1768517927
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_38
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f753616596c690d45abcca400662271d
-      internalID: -1052346645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ROBO WITH HANDS_39
+      name: ROBO_WITHOUT HANDS_25
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6a264f265fa7e745852833e0f2fa474
-      internalID: -1251797202
+      spriteID: 4d2af2d94b858f54280b4ce83ea0255a
+      internalID: -1990288791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_40
+      name: ROBO_WITHOUT HANDS_26
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e249a3c21950c0b4f9738a8004b429fb
-      internalID: -974375820
+      spriteID: 7d548a0077c30b74b9d97ed42f915ef5
+      internalID: -991109383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_41
+      name: ROBO_WITHOUT HANDS_27
       rect:
         serializedVersion: 2
-        x: 64
+        x: 81
         y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 17
+        height: 16
+      alignment: 9
+      pivot: {x: 0.0842523, y: 0.3757153}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c69691562925cf847ac9e2fc23c07a7b
-      internalID: -1230029489
+      spriteID: 848acb5372035724fbb4f2b72c24c32a
+      internalID: 1036555662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBO WITH HANDS_42
+      name: ROBO_WITHOUT HANDS_28
       rect:
         serializedVersion: 2
-        x: 96
+        x: 113
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5b51c8d9afb79c44b6fa663f2a93a19
-      internalID: -1242497861
+      spriteID: cdc4d3b73c332c94c8cb247549e49d3e
+      internalID: -895486345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_29
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271766cbc16047c48ac3b1cf9d84749b
+      internalID: 441633831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_30
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7469bce446d5142907911359ab858c
+      internalID: -1475404977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_31
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9ebe8152e7ed2443a1f46d10dab3924
+      internalID: -61280793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_32
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebcfc281e185d7642b1521370dcf17e6
+      internalID: 462388274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_33
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e16a66e6b27f724c9e964f912d03309
+      internalID: 695771259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_34
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b7478442d498254bba7aad0f3c8e4e1
+      internalID: 1855073613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_35
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99690192d5e5ea84a892ce5af474c2f7
+      internalID: -847962043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_36
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
+        width: 17
+        height: 16
+      alignment: 9
+      pivot: {x: 0.0842523, y: 0.37571535}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f8989805680a3145add7f3c85963016
+      internalID: -1327375172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_38
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dff84410b4faa6a42a985d4471221c34
+      internalID: -1737261121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_39
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 16
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59e57b071500494bb65a8260e3e4ff7
+      internalID: -1007530604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBO_WITHOUT HANDS_40
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a395392502fdcde4b87b2ec39fb0b30f
+      internalID: 368598996
       vertices: []
       indices: 
       edges: []
@@ -1049,49 +986,47 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ROBO WITH HANDS_0: -2101459962
-      ROBO WITH HANDS_1: 1510292118
-      ROBO WITH HANDS_10: 1808249988
-      ROBO WITH HANDS_11: -1393821679
-      ROBO WITH HANDS_12: 1534117642
-      ROBO WITH HANDS_13: -467939836
-      ROBO WITH HANDS_14: 1988198228
-      ROBO WITH HANDS_15: 1874121024
-      ROBO WITH HANDS_16: -889282095
-      ROBO WITH HANDS_17: 1529086054
-      ROBO WITH HANDS_18: -1016714820
-      ROBO WITH HANDS_19: 989824073
-      ROBO WITH HANDS_2: 1864145706
-      ROBO WITH HANDS_20: 1365238324
-      ROBO WITH HANDS_21: 2047175624
-      ROBO WITH HANDS_22: 156525819
-      ROBO WITH HANDS_23: 127647372
-      ROBO WITH HANDS_24: 957440997
-      ROBO WITH HANDS_25: -435362303
-      ROBO WITH HANDS_26: -995474126
-      ROBO WITH HANDS_27: 2110700487
-      ROBO WITH HANDS_28: -1083141399
-      ROBO WITH HANDS_29: 748485631
-      ROBO WITH HANDS_3: 1582359080
-      ROBO WITH HANDS_30: 363922383
-      ROBO WITH HANDS_31: 95480555
-      ROBO WITH HANDS_32: 957235928
-      ROBO WITH HANDS_33: 1845476695
-      ROBO WITH HANDS_34: -1851717069
-      ROBO WITH HANDS_35: 1550842336
-      ROBO WITH HANDS_36: -522571619
-      ROBO WITH HANDS_37: 1768517927
-      ROBO WITH HANDS_38: -1052346645
-      ROBO WITH HANDS_39: -1251797202
-      ROBO WITH HANDS_4: 1436945623
-      ROBO WITH HANDS_40: -974375820
-      ROBO WITH HANDS_41: -1230029489
-      ROBO WITH HANDS_42: -1242497861
-      ROBO WITH HANDS_5: 442079178
-      ROBO WITH HANDS_6: -718525921
-      ROBO WITH HANDS_7: -2136224871
-      ROBO WITH HANDS_8: 1163548112
-      ROBO WITH HANDS_9: -551054142
+      ROBO_WITHOUT HANDS_0: 997904918
+      ROBO_WITHOUT HANDS_1: 485160185
+      ROBO_WITHOUT HANDS_10: 562536179
+      ROBO_WITHOUT HANDS_11: 624508563
+      ROBO_WITHOUT HANDS_12: -767964631
+      ROBO_WITHOUT HANDS_13: -2044574724
+      ROBO_WITHOUT HANDS_14: -277973316
+      ROBO_WITHOUT HANDS_15: -1383159977
+      ROBO_WITHOUT HANDS_16: -1525174993
+      ROBO_WITHOUT HANDS_17: 987579660
+      ROBO_WITHOUT HANDS_18: -1636258983
+      ROBO_WITHOUT HANDS_19: -32359659
+      ROBO_WITHOUT HANDS_2: 1203019483
+      ROBO_WITHOUT HANDS_20: -1171577449
+      ROBO_WITHOUT HANDS_21: -1582644155
+      ROBO_WITHOUT HANDS_22: -1163993996
+      ROBO_WITHOUT HANDS_23: 1706855362
+      ROBO_WITHOUT HANDS_24: -368327466
+      ROBO_WITHOUT HANDS_25: -1990288791
+      ROBO_WITHOUT HANDS_26: -991109383
+      ROBO_WITHOUT HANDS_27: 1036555662
+      ROBO_WITHOUT HANDS_28: -895486345
+      ROBO_WITHOUT HANDS_29: 441633831
+      ROBO_WITHOUT HANDS_3: -1584604913
+      ROBO_WITHOUT HANDS_30: -1475404977
+      ROBO_WITHOUT HANDS_31: -61280793
+      ROBO_WITHOUT HANDS_32: 462388274
+      ROBO_WITHOUT HANDS_33: 695771259
+      ROBO_WITHOUT HANDS_34: 1855073613
+      ROBO_WITHOUT HANDS_35: -847962043
+      ROBO_WITHOUT HANDS_36: -1327375172
+      ROBO_WITHOUT HANDS_37: -2012104359
+      ROBO_WITHOUT HANDS_38: -1737261121
+      ROBO_WITHOUT HANDS_39: -1007530604
+      ROBO_WITHOUT HANDS_4: 1444334013
+      ROBO_WITHOUT HANDS_40: 368598996
+      ROBO_WITHOUT HANDS_5: -518546242
+      ROBO_WITHOUT HANDS_6: -829471499
+      ROBO_WITHOUT HANDS_7: -810588030
+      ROBO_WITHOUT HANDS_8: -301021959
+      ROBO_WITHOUT HANDS_9: 1491152443
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

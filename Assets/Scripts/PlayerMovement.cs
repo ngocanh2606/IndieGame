@@ -15,15 +15,21 @@ public class PlayerMovement : MonoBehaviour
 
     private GravityController gravityScript;
 
+    private PlayerAnimation playerAnimation;
+    [System.NonSerialized] public SpriteRenderer sprite;
+
+    private void Awake()
+    {
+        playerAnimation = GetComponent<PlayerAnimation>();
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
 
-        gravityScript = FindObjectOfType<GravityController>();  // This finds the GravityController script in the scene
-        if (gravityScript == null)
-        {
-            Debug.LogError("GravityController script not found in the scene.");
-        }
+        gravityScript = FindObjectOfType<GravityController>();
+
     }
 
     void FixedUpdate()
@@ -33,22 +39,54 @@ public class PlayerMovement : MonoBehaviour
         // Check if the player is grounded using a small circle overlap at the groundCheck position
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
-        //ApplyGravity()
-
         // Apply normal movement
         transform.Translate(moveDirection * speed * Time.fixedDeltaTime);
 
         ApplyGravity();
+        RunAnim();
+
     }
 
     public void SetMoveDirection(Vector2 direction)
     {
         moveDirection = direction;
+        if (direction.x > 0)
+        {
+            sprite.flipX = false;
+        }
+        else if (direction.x < 0)
+        {
+            sprite.flipX = true;
+        }
     }
 
     public void StopMoving()
     {
         moveDirection = Vector2.zero;
+    }
+
+    public void RunAnim()
+    {
+        if (isGrounded && (moveDirection == Vector2.zero))
+        {
+            playerAnimation.SetState(PlayerCharacterState.Idle);
+        }
+        else if (isGrounded && (moveDirection != Vector2.zero))
+        {
+            playerAnimation.SetState(PlayerCharacterState.Run);
+        }
+        else if (!isGrounded)
+        {
+            playerAnimation.SetState(PlayerCharacterState.Jump);
+            if (rb.velocity.y > 0.1f)
+            {
+                playerAnimation.SetState(PlayerCharacterState.Jump);
+            }
+            else if (rb.velocity.y < -0.1f)
+            {
+                playerAnimation.SetState(PlayerCharacterState.Fall);
+            }
+        }
     }
 
     public void Jump()
@@ -57,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset the vertical velocity to avoid double jumping
             rb.AddForce(-gravityScript.gravityDirection * jumpForce, ForceMode2D.Impulse);  // Apply the jump force in the opposite direction of gravity
-            Debug.Log("jump");
         }
     }
 

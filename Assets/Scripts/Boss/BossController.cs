@@ -35,7 +35,6 @@ public class BossController : MonoBehaviour
     //Test
     private float angleFromPlayer = 0f; // Angle for the shooting pattern. when set to 0, it shoots to right
 
-
     private void Start()
     {
         isDead = false;
