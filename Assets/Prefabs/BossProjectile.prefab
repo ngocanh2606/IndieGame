@@ -138,6 +138,7 @@ MonoBehaviour:
   speed: 5
   lifetime: 5
   damage: 10
+  anim: {fileID: 6586796224415877267}
 --- !u!50 &990585884253824899
 Rigidbody2D:
   serializedVersion: 4

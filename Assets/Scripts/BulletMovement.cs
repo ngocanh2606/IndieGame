@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
@@ -9,31 +8,51 @@ public class BulletMovement : MonoBehaviour
     public int damage = 1;
     private Rigidbody2D rb;
 
+    public Animator anim;
+
+    private bool hasExploded = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        // Destroy after the lifetime expires
-        Destroy(gameObject, lifetime);
+        Destroy(gameObject, lifetime); // Destroy after lifetime if it doesn't hit anything
     }
 
     void Update()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        if (!hasExploded)
+        {
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Handle damage or destruction on collision
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (hasExploded) return;
+
+        if (collision.CompareTag("Enemy"))
         {
-            // Apply damage or any other effect
-            collision.gameObject.GetComponent<BossController>().TakeDamage(damage);
-            Destroy(gameObject);
+            collision.GetComponent<BossController>()?.TakeDamage(damage);
+            StartCoroutine(WaitForExplodeAnimation());
         }
-        else if (collision.gameObject.CompareTag("Ground"))
+        else if (collision.CompareTag("Ground"))
         {
-            Destroy(gameObject);
+            StartCoroutine(WaitForExplodeAnimation());
         }
+    }
+
+    private IEnumerator WaitForExplodeAnimation()
+    {
+        hasExploded = true;
+        speed = 0f;
+        anim.SetTrigger("Explode");
+
+        // Optional: Disable collider to prevent double triggering
+        GetComponent<Collider2D>().enabled = false;
+
+        // Wait for animation to finish before destroying
+        yield return new WaitForSeconds(0.2f);
+
+        Destroy(gameObject);
     }
 }

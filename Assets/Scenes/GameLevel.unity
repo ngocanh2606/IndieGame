@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 212, y: 141.25058}
+  m_AnchoredPosition: {x: 212, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267673017
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644b6ad630b4cc34eb9cf4fd775625b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityChangeInterval: 1000
+  gravityChangeInterval: 10
   gravityStrength: 10
   playerRigidbody: {fileID: 1702471035}
   playerTransform: {fileID: 1702471032}
@@ -606,6 +606,7 @@ MonoBehaviour:
   playerMovement: {fileID: 1702471030}
   firePoint: {fileID: 1501885444}
   firePointOffset: {x: 0, y: 0, z: 0}
+  playerTransform: {fileID: 1702471032}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,6 +933,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637006012}
   m_CullTransparentMesh: 1
+--- !u!95 &690927056 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 706701044218106803, guid: 96d85df16f7e3ce4fb3ff6c301548b0b, type: 3}
+  m_PrefabInstance: {fileID: 1253937465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &762429849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,9 +4138,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 731720558770380272, guid: 96d85df16f7e3ce4fb3ff6c301548b0b, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 690927056}
     - target: {fileID: 3177734191493547960, guid: 96d85df16f7e3ce4fb3ff6c301548b0b, type: 3}
       propertyPath: m_Name
       value: PlayerProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177734191493547960, guid: 96d85df16f7e3ce4fb3ff6c301548b0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3589392771919263091, guid: 96d85df16f7e3ce4fb3ff6c301548b0b, type: 3}
       propertyPath: m_RootOrder
@@ -11502,7 +11516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -661.1061, y: 131.75055}
+  m_AnchoredPosition: {x: -661.1061, y: 0}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389552493
@@ -11611,6 +11625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossProjectile
       objectReference: {fileID: 0}
+    - target: {fileID: 3275823695345185366, guid: 2df11bb862d964a4cabe9ff7a2679512, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8506708448396496238, guid: 2df11bb862d964a4cabe9ff7a2679512, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -11697,7 +11715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 442.9687, y: 131.75055}
+  m_AnchoredPosition: {x: 442.9687, y: 0}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447744401
@@ -13535,10 +13553,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1788453020}
   player: {fileID: 1702471032}
+  bossGameObject: {fileID: 1978669503}
   healthBar: {fileID: 1487059142}
   maxHealth: 100
   isDead: 0
-  regenerationRate: 5
+  regenerationRate: 1
   regenerationInterval: 1
   patternChangeInterval: 5
   fireCooldownTime: 0.5

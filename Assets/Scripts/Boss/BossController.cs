@@ -7,6 +7,7 @@ public class BossController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     public Transform player;
+    [SerializeField] private GameObject bossGameObject;
 
     private int lastPhase = 1;
     private int currentPhase;
@@ -200,5 +201,6 @@ public class BossController : MonoBehaviour
         isDead = true;
 
         gameManager.Win();   // Call Win method from GameManager script
+        Destroy(bossGameObject);
     }
 }

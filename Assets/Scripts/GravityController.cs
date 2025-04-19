@@ -56,7 +56,10 @@ public class GravityController : MonoBehaviour
         }
 
         // Apply gravity direction and player rotation
-        ApplyGravity();
+        if (playerRigidbody != null)
+        {
+            ApplyGravity();
+        }
     }
 
     // Apply the gravity force and rotate the player accordingly

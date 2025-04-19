@@ -8,16 +8,26 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float lifetime = 5f;
     public float damage = 1;
 
+    public Animator anim;
+    private bool hasExploded = false;
+
     private Rigidbody2D rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Move the projectile forward in the direction it's facing
-        rb.velocity = transform.right * speed;
-
         Destroy(gameObject, lifetime);
+    }
+
+    private void Update()
+    {
+        if (!hasExploded)
+        {
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+
+            //rb.velocity = transform.right * speed;
+        }
     }
 
     // Handle collision
@@ -27,11 +37,26 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHealth>().OnTakeDamage(damage);
-            Destroy(gameObject); 
+            StartCoroutine(WaitForExplodeAnimation());
         }
         else if (collision.gameObject.CompareTag("Ground"))
         {
-            Destroy(gameObject); 
+            StartCoroutine(WaitForExplodeAnimation());
         }
+    }
+
+    private IEnumerator WaitForExplodeAnimation()
+    {
+        hasExploded = true;
+        speed = 0f;
+        anim.SetTrigger("Explode");
+
+        // Optional: Disable collider to prevent double triggering
+        GetComponent<Collider2D>().enabled = false;
+
+        // Wait for animation to finish before destroying
+        yield return new WaitForSeconds(0.2f);
+
+        Destroy(gameObject);
     }
 }
