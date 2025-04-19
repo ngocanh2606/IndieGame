@@ -8,10 +8,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float maxHealth = 100f;           // Player's maximum health
     private float currentHealth;                               // Player's current health
 
-    [SerializeField] private float regenerationRate = 5f;      // Amount of health regenerated per tick
-    [SerializeField] private float regenerationInterval = 1f;  // Time interval between regeneration ticks (in seconds)
-    private float regenerationTimer;                           // Timer to track regeneration intervals
-
     public bool isDead = false;
     public static bool isPlayerDead = false;
 
@@ -41,33 +37,10 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        // Regenerate health if below max
-        if (currentHealth < maxHealth && !isDead)
-        {
-            HandleHealthRegeneration();
-        }
-
         // Update the health bar to reflect the current health
         if (healthBar != null)
         {
             healthBar.value = currentHealth;
-        }
-    }
-
-    private void HandleHealthRegeneration()
-    {
-        // Increase the regeneration timer
-        regenerationTimer += Time.deltaTime;
-
-        // Regenerate health at set intervals
-        if (regenerationTimer >= regenerationInterval)
-        {
-            currentHealth += regenerationRate;
-            regenerationTimer = 0f; // Reset the timer
-
-            // Clamp the health to not exceed max health
-            currentHealth = Mathf.Min(currentHealth, maxHealth);
-            Debug.Log("Player health regenerated: " + regenerationRate + ", Current Health: " + currentHealth);
         }
     }
 

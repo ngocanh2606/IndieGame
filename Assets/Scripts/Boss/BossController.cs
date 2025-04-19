@@ -18,6 +18,11 @@ public class BossController : MonoBehaviour
     private float currentHealth = 100f;   
     public bool isDead = false;
 
+    //Health regeneration
+    [SerializeField] private float regenerationRate = 5f;      // Amount of health regenerated per tick
+    [SerializeField] private float regenerationInterval = 1f;  // Time interval between regeneration ticks (in seconds)
+    private float regenerationTimer;
+
     // Shooting pattern configurations
     private IShootPattern currentShootPattern;                 // The current shooting pattern
     [SerializeField] private float patternChangeInterval = 2f; // Fire rate time between shots
@@ -30,7 +35,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform shootPoint;             // The point from which the boss shoots
     private Projectile bossBullet;
     private float initialDamage = 0f;
-    [SerializeField] private float damageMultiplier = 1.5f; 
+    [SerializeField] private float damageMultiplier = 1.5f;
 
     //Test
     private float angleFromPlayer = 0f; // Angle for the shooting pattern. when set to 0, it shoots to right
@@ -107,10 +112,32 @@ public class BossController : MonoBehaviour
             }
         }
 
+        if (currentHealth < maxHealth && !isDead)
+        {
+            HandleHealthRegeneration();
+        }
+
         // Update the health bar
         if (healthBar != null)
         {
             healthBar.value = currentHealth;
+        }
+    }
+
+    private void HandleHealthRegeneration()
+    {
+        // Increase the regeneration timer
+        regenerationTimer += Time.deltaTime;
+
+        // Regenerate health at set intervals
+        if (regenerationTimer >= regenerationInterval)
+        {
+            currentHealth += regenerationRate;
+            regenerationTimer = 0f; // Reset the timer
+
+            // Clamp the health to not exceed max health
+            currentHealth = Mathf.Min(currentHealth, maxHealth);
+            Debug.Log("Boss health regenerated: " + regenerationRate + ", Current Health: " + currentHealth);
         }
     }
 

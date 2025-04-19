@@ -17,22 +17,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private PlayerAnimation playerAnimation;
 
-    private bool isWin;
-
-
-
     // Method to call when the player loses
     public void Lose()
     {
         playerAnimation.SetState(PlayerCharacterState.Die);
         StartCoroutine(WaitForDeathAnimation());
-
     }
 
     // Method to call when the player wins
     public void Win()
     {
-        isWin = true;
         playerAnimation.SetState(PlayerCharacterState.Win);
         ShowWinText();
         GameEnd();

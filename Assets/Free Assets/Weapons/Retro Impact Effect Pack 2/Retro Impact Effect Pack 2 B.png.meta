@@ -1,0 +1,413 @@
+fileFormatVersion: 2
+guid: 26dc8deddb8c855439d1ba5687007b30
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Retro Impact Effect Pack 2 B_51
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff77a63ef42e2b546b206e774edd1c9a
+      internalID: 1001151126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Retro Impact Effect Pack 2 B_130
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50f9f9143d7d10f449d5c83287d7aef8
+      internalID: -1704839906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Retro Impact Effect Pack 2 B_131
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f00d3fcee649a34188d6093a88dc1ba
+      internalID: 638904441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Retro Impact Effect Pack 2 B_132
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5330a70e234a0824b8363512069f7288
+      internalID: 1479340892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Retro Impact Effect Pack 2 B_133
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 050dc3eb90740a34da8d813d9abcd7c0
+      internalID: 1563566561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Retro Impact Effect Pack 2 B_0: -1073720634
+      Retro Impact Effect Pack 2 B_1: -1717754728
+      Retro Impact Effect Pack 2 B_10: -595432027
+      Retro Impact Effect Pack 2 B_100: 1366667699
+      Retro Impact Effect Pack 2 B_101: -1168571342
+      Retro Impact Effect Pack 2 B_102: -974381283
+      Retro Impact Effect Pack 2 B_103: 398502522
+      Retro Impact Effect Pack 2 B_104: -1770237347
+      Retro Impact Effect Pack 2 B_105: -1342522406
+      Retro Impact Effect Pack 2 B_106: 96538143
+      Retro Impact Effect Pack 2 B_107: -209339131
+      Retro Impact Effect Pack 2 B_108: 190486046
+      Retro Impact Effect Pack 2 B_109: 902198513
+      Retro Impact Effect Pack 2 B_11: 1367403272
+      Retro Impact Effect Pack 2 B_110: -1664586688
+      Retro Impact Effect Pack 2 B_111: 728701117
+      Retro Impact Effect Pack 2 B_112: 587789070
+      Retro Impact Effect Pack 2 B_113: 1395294079
+      Retro Impact Effect Pack 2 B_114: -1635643386
+      Retro Impact Effect Pack 2 B_115: 1216363108
+      Retro Impact Effect Pack 2 B_116: 1162564311
+      Retro Impact Effect Pack 2 B_117: -266967675
+      Retro Impact Effect Pack 2 B_118: -1768048110
+      Retro Impact Effect Pack 2 B_119: 943115511
+      Retro Impact Effect Pack 2 B_12: 256228459
+      Retro Impact Effect Pack 2 B_120: 149068771
+      Retro Impact Effect Pack 2 B_121: 585699027
+      Retro Impact Effect Pack 2 B_122: 1517671745
+      Retro Impact Effect Pack 2 B_123: 1165076472
+      Retro Impact Effect Pack 2 B_124: -2034325976
+      Retro Impact Effect Pack 2 B_125: 1659348303
+      Retro Impact Effect Pack 2 B_126: -90229876
+      Retro Impact Effect Pack 2 B_127: 82536556
+      Retro Impact Effect Pack 2 B_128: -1868272554
+      Retro Impact Effect Pack 2 B_129: -1931938427
+      Retro Impact Effect Pack 2 B_13: 737380599
+      Retro Impact Effect Pack 2 B_130: -1704839906
+      Retro Impact Effect Pack 2 B_131: 638904441
+      Retro Impact Effect Pack 2 B_132: 1479340892
+      Retro Impact Effect Pack 2 B_133: 1563566561
+      Retro Impact Effect Pack 2 B_134: 464839194
+      Retro Impact Effect Pack 2 B_135: 1022189705
+      Retro Impact Effect Pack 2 B_136: -1982240739
+      Retro Impact Effect Pack 2 B_137: -915094433
+      Retro Impact Effect Pack 2 B_138: 1024146709
+      Retro Impact Effect Pack 2 B_139: -1425924619
+      Retro Impact Effect Pack 2 B_14: -514685587
+      Retro Impact Effect Pack 2 B_140: -1873393465
+      Retro Impact Effect Pack 2 B_141: -740550478
+      Retro Impact Effect Pack 2 B_142: -373553330
+      Retro Impact Effect Pack 2 B_143: 1514814684
+      Retro Impact Effect Pack 2 B_144: 1618678224
+      Retro Impact Effect Pack 2 B_145: 996876613
+      Retro Impact Effect Pack 2 B_146: 1000139356
+      Retro Impact Effect Pack 2 B_147: 835181067
+      Retro Impact Effect Pack 2 B_148: 1184646786
+      Retro Impact Effect Pack 2 B_149: -506226914
+      Retro Impact Effect Pack 2 B_15: -1801304871
+      Retro Impact Effect Pack 2 B_150: -198614643
+      Retro Impact Effect Pack 2 B_151: -883621822
+      Retro Impact Effect Pack 2 B_152: 133526864
+      Retro Impact Effect Pack 2 B_153: -1542864557
+      Retro Impact Effect Pack 2 B_154: 415258000
+      Retro Impact Effect Pack 2 B_16: -1690127209
+      Retro Impact Effect Pack 2 B_17: -1151091027
+      Retro Impact Effect Pack 2 B_18: -2092113625
+      Retro Impact Effect Pack 2 B_19: 273797670
+      Retro Impact Effect Pack 2 B_2: 557651796
+      Retro Impact Effect Pack 2 B_20: 422809247
+      Retro Impact Effect Pack 2 B_21: -317752708
+      Retro Impact Effect Pack 2 B_22: 63598602
+      Retro Impact Effect Pack 2 B_23: -1411763557
+      Retro Impact Effect Pack 2 B_24: -434693898
+      Retro Impact Effect Pack 2 B_25: 998471853
+      Retro Impact Effect Pack 2 B_26: 1446512821
+      Retro Impact Effect Pack 2 B_27: -1052779562
+      Retro Impact Effect Pack 2 B_28: 863653259
+      Retro Impact Effect Pack 2 B_29: 1673522361
+      Retro Impact Effect Pack 2 B_3: -1279067198
+      Retro Impact Effect Pack 2 B_30: -544270493
+      Retro Impact Effect Pack 2 B_31: -578714920
+      Retro Impact Effect Pack 2 B_32: 362577553
+      Retro Impact Effect Pack 2 B_33: -365609928
+      Retro Impact Effect Pack 2 B_34: 2045013826
+      Retro Impact Effect Pack 2 B_35: -1731009972
+      Retro Impact Effect Pack 2 B_36: 969681886
+      Retro Impact Effect Pack 2 B_37: -604243156
+      Retro Impact Effect Pack 2 B_38: 1214286091
+      Retro Impact Effect Pack 2 B_39: -1274862249
+      Retro Impact Effect Pack 2 B_4: -1870627572
+      Retro Impact Effect Pack 2 B_40: 1491421834
+      Retro Impact Effect Pack 2 B_41: -189854912
+      Retro Impact Effect Pack 2 B_42: 1746650497
+      Retro Impact Effect Pack 2 B_43: 325665061
+      Retro Impact Effect Pack 2 B_44: -52752303
+      Retro Impact Effect Pack 2 B_45: -78378986
+      Retro Impact Effect Pack 2 B_46: 1440999176
+      Retro Impact Effect Pack 2 B_47: 1212280755
+      Retro Impact Effect Pack 2 B_48: -81496992
+      Retro Impact Effect Pack 2 B_49: -1364804343
+      Retro Impact Effect Pack 2 B_5: -1151105723
+      Retro Impact Effect Pack 2 B_50: 1271675467
+      Retro Impact Effect Pack 2 B_51: 1001151126
+      Retro Impact Effect Pack 2 B_52: 2093152656
+      Retro Impact Effect Pack 2 B_53: 1493277468
+      Retro Impact Effect Pack 2 B_54: -1999700211
+      Retro Impact Effect Pack 2 B_55: 1196561196
+      Retro Impact Effect Pack 2 B_56: 1949929789
+      Retro Impact Effect Pack 2 B_57: 1701593576
+      Retro Impact Effect Pack 2 B_58: -1835238574
+      Retro Impact Effect Pack 2 B_59: -65669874
+      Retro Impact Effect Pack 2 B_6: 1829697341
+      Retro Impact Effect Pack 2 B_60: 584911677
+      Retro Impact Effect Pack 2 B_61: -399491823
+      Retro Impact Effect Pack 2 B_62: 997983692
+      Retro Impact Effect Pack 2 B_63: -1282344529
+      Retro Impact Effect Pack 2 B_64: 1646695162
+      Retro Impact Effect Pack 2 B_65: 815015113
+      Retro Impact Effect Pack 2 B_66: -228576218
+      Retro Impact Effect Pack 2 B_67: -1060989136
+      Retro Impact Effect Pack 2 B_68: -1337549673
+      Retro Impact Effect Pack 2 B_69: -162585282
+      Retro Impact Effect Pack 2 B_7: 1129039783
+      Retro Impact Effect Pack 2 B_70: 1047114495
+      Retro Impact Effect Pack 2 B_71: -1646610753
+      Retro Impact Effect Pack 2 B_72: -1275503160
+      Retro Impact Effect Pack 2 B_73: -1068377764
+      Retro Impact Effect Pack 2 B_74: -928966672
+      Retro Impact Effect Pack 2 B_75: 2028148777
+      Retro Impact Effect Pack 2 B_76: -1976551654
+      Retro Impact Effect Pack 2 B_77: -1269201279
+      Retro Impact Effect Pack 2 B_78: 549181667
+      Retro Impact Effect Pack 2 B_79: -316517603
+      Retro Impact Effect Pack 2 B_8: 155078391
+      Retro Impact Effect Pack 2 B_80: -763910293
+      Retro Impact Effect Pack 2 B_81: 1492919683
+      Retro Impact Effect Pack 2 B_82: 1063669458
+      Retro Impact Effect Pack 2 B_83: -421647337
+      Retro Impact Effect Pack 2 B_84: -1110415338
+      Retro Impact Effect Pack 2 B_85: -1374183749
+      Retro Impact Effect Pack 2 B_86: 796731209
+      Retro Impact Effect Pack 2 B_87: -970288102
+      Retro Impact Effect Pack 2 B_88: 779300764
+      Retro Impact Effect Pack 2 B_89: -1869307288
+      Retro Impact Effect Pack 2 B_9: -338372423
+      Retro Impact Effect Pack 2 B_90: -183515531
+      Retro Impact Effect Pack 2 B_91: -1309467993
+      Retro Impact Effect Pack 2 B_92: -515243442
+      Retro Impact Effect Pack 2 B_93: -383693785
+      Retro Impact Effect Pack 2 B_94: -1342921835
+      Retro Impact Effect Pack 2 B_95: 362247427
+      Retro Impact Effect Pack 2 B_96: 1379128124
+      Retro Impact Effect Pack 2 B_97: 2139948781
+      Retro Impact Effect Pack 2 B_98: 1732794396
+      Retro Impact Effect Pack 2 B_99: 1855091351
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
