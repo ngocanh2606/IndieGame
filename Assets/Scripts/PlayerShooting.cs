@@ -33,6 +33,7 @@ public class PlayerShooting : MonoBehaviour
             // Shoot immediately on first touch, then use interval
             if (firstShot || shootTimer >= shootInterval)
             {
+                AudioManager.instance.PlayShootSFX();
                 Shoot();
                 shootTimer = 0;
                 firstShot = false; // First shot done, rely on interval now
@@ -43,6 +44,7 @@ public class PlayerShooting : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.StopShootSFX();
             isShooting = false;
             firstShot = false;    // Reset first shot when joystick returns to center
         }

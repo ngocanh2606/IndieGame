@@ -15,8 +15,8 @@ public class BossController : MonoBehaviour
 
     // Health configs
     [SerializeField] private Slider healthBar;  // Reference to the boss's health bar slider
-    [SerializeField] private float maxHealth = 100f;           // The maximum health of the boss
-    private float currentHealth = 100f;   
+    public float maxHealth = 100f;           // The maximum health of the boss
+    [System.NonSerialized] public float currentHealth = 100f;   
     public bool isDead = false;
 
     //Health regeneration
@@ -38,13 +38,16 @@ public class BossController : MonoBehaviour
     private float initialDamage = 0f;
     [SerializeField] private float damageMultiplier = 1.5f;
 
-    //Test
     private float angleFromPlayer = 0f; // Angle for the shooting pattern. when set to 0, it shoots to right
+
+    //Tutorial
+    private bool isTutorial = false;
 
     private void Start()
     {
+        
         isDead = false;
-        bossBullet = projectilePrefab.GetComponent<Projectile>();  // Assuming Projectile is a script attached to the prefab
+        bossBullet = projectilePrefab.GetComponent<Projectile>(); 
         gameManager = FindObjectOfType<GameManager>();
 
         if (projectilePrefab != null)
@@ -67,10 +70,31 @@ public class BossController : MonoBehaviour
             healthBar.maxValue = maxHealth;  // Set the max value of the slider
             healthBar.value = currentHealth; // Set the current value of the slider
         }
+
+        if (TutorialManager.instance != null)
+        {
+            isTutorial = true;
+            maxHealth = 50;
+            currentHealth = maxHealth;
+            currentShootPattern = new SpiralShootPattern();
+            if (healthBar != null)
+            {
+                healthBar.maxValue = maxHealth;  // Set the max value of the slider
+                healthBar.value = currentHealth; // Set the current value of the slider
+            }
+        }
     }
 
     private void Update()
     {
+        if (isTutorial)
+        {
+            if(TutorialManager.instance.currentStep != TutorialStep.KillBoss)
+            {
+                return;
+            }
+        }
+
         if (!PlayerHealth.isPlayerDead && !isDead)
         {
             // Change the shooting pattern at regular intervals
@@ -94,12 +118,11 @@ public class BossController : MonoBehaviour
                 {
                     //Shoot(Vector3 position, float angle, float spreadAngle, int projectileCount, GameObject projectilePrefab);
                     case SpreadShootPattern _:
-                        currentShootPattern.Shoot(shootPoint.position, angleFromPlayer, 20, 5, projectilePrefab);
-
+                        currentShootPattern.Shoot(shootPoint.position, angleFromPlayer - 90, 20, 5, projectilePrefab);
                         break;
                    
                     case SpiralShootPattern _:
-                        currentShootPattern.Shoot(shootPoint.position, angleFromPlayer, 30, 3, projectilePrefab);
+                        currentShootPattern.Shoot(shootPoint.position, angleFromPlayer - 90, 30, 3, projectilePrefab);
 
                         break;
                    
@@ -109,7 +132,6 @@ public class BossController : MonoBehaviour
                 }
 
                 nextShootTime = Time.time + fireCooldownTime;
-                Debug.Log("currentPhase " + currentPhase + ", " + currentShootPattern);
             }
         }
 
@@ -156,6 +178,13 @@ public class BossController : MonoBehaviour
         float roll = Random.Range(0f, 1f);
 
         // Select shooting pattern based on health percentage and random roll
+
+        if (isTutorial)
+        {
+            currentShootPattern = new SpiralShootPattern();
+            return;
+        }
+
         if (healthPercentage > 0.7f)
         {
             currentShootPattern = roll < 0.7f ? (IShootPattern)new SpreadShootPattern() : new SpiralShootPattern();
@@ -198,6 +227,11 @@ public class BossController : MonoBehaviour
     private void Die()
     {
         if (isDead) return;  // Prevent multiple death triggers
+        if (isTutorial)
+        {
+            isTutorial = false;
+        }
+
         isDead = true;
 
         gameManager.Win();   // Call Win method from GameManager script

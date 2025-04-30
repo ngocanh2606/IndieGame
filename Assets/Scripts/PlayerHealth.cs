@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
 
     private PlayerAnimation playerAnimation;
 
+    private bool isTutorial = false;
+
     private void Awake()
     {
         playerAnimation = GetComponent<PlayerAnimation>();
@@ -33,6 +35,11 @@ public class PlayerHealth : MonoBehaviour
             healthBar.maxValue = maxHealth;  // Set the max value of the slider
             healthBar.value = currentHealth; // Set the current value of the slider
         }
+
+        if (TutorialManager.instance != null)
+        {
+            isTutorial = true;
+        }
     }
 
     void Update()
@@ -49,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
 
         playerAnimation.SetState(PlayerCharacterState.TakeDamage);
+        AudioManager.instance.PlayHitSFX();
         currentHealth -= damageAmount;
         currentHealth = Mathf.Max(currentHealth, 0); // Ensure health doesn't go below 0
 
@@ -62,6 +70,13 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         if (isDead) return;  // Prevent multiple death triggers
+        if (isTutorial)
+        {
+            currentHealth = maxHealth; // Reset health for tutorial
+            TutorialManager.instance.currentStep = TutorialStep.LoseRestart;
+            return;
+        }
+
         isDead = true;
         isPlayerDead = isDead;
 

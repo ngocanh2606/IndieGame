@@ -24,7 +24,7 @@ public class AbilityManager : MonoBehaviour
 
     public Image abilityUIImage;                                   // UI Image component to display the ability icon
     public List<Ability> abilityDefinitions = new List<Ability>(); // List of defined abilities (collected abilities)
-    private Stack<Ability> abilityStack = new Stack<Ability>();    // Stack to store abilities that the player has collected
+    public Stack<Ability> abilityStack = new Stack<Ability>();    // Stack to store abilities that the player has collected
 
     // References to the actual ability scripts for GravityFree and Dash
     public GravityFreeAbility gravityFreeAbility;
@@ -50,6 +50,7 @@ public class AbilityManager : MonoBehaviour
             // Check that no gravity or dash is in progress
             if (gravityFreeAbility.isGravityFree == false && gravityDashAbility.isDashing == false)
             {
+                AudioManager.instance.PlayUseAbilitySFX();
                 Ability currentAbility = abilityStack.Pop(); // Pop the top ability from the stack
                 UseAbility(currentAbility.type);             // Use the selected ability
                 UpdateAbilityUI();
@@ -68,7 +69,6 @@ public class AbilityManager : MonoBehaviour
         {
             abilityStack.Push(newAbility.Value);  
             UpdateAbilityUI();                    
-            Debug.Log("Added: " + abilityType);
         }
     }
 
@@ -84,8 +84,11 @@ public class AbilityManager : MonoBehaviour
 
             case AbilityType.GravityDash:
                 PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
-                playerAnimation.SetState(PlayerCharacterState.Dash);
-                gravityDashAbility.Activate(playerMovement.moveDirection);
+                if(playerMovement.moveDirection.x != 0)
+                {
+                    playerAnimation.SetState(PlayerCharacterState.Dash);
+                    gravityDashAbility.Activate(playerMovement.moveDirection);
+                }
                 break;
         }
     }

@@ -20,6 +20,7 @@ public class AbilityCollectible : MonoBehaviour
             AbilityManager abilityManager = other.GetComponent<AbilityManager>();
             if (abilityManager != null)
             {
+                AudioManager.instance.PlayCollectAbilitySFX(); 
                 abilityManager.CollectAbility(abilityType); // Add to the stack in Ability Manager script
                 Destroy(gameObject);
             }

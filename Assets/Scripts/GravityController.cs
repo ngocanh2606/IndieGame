@@ -12,24 +12,51 @@ public class GravityController : MonoBehaviour
     public Vector2 gravityDirection = Vector2.down;         // Current gravity direction
     public Vector2 gravityForce;
 
+    private int currentDirection = 2;
+
+    private bool isTutorial;
+    private int countDirection = 0;
+
     void Start()
     {
-        // Initialize with a random gravity direction
-        //ChangeGravity();
 
         gravityForce = Vector2.down * gravityStrength;
         playerRigidbody.AddForce(gravityForce, ForceMode2D.Force);
 
+        if (TutorialManager.instance == null)
+        {
+            StartCoroutine(GravityShift());
+            isTutorial = false;
+        }
+        else
+        {
+            isTutorial = true;
+            gravityChangeInterval = 5f;
+        }
+    }
+
+    public void StartGravityShift()
+    {
+
         StartCoroutine(GravityShift());
+
     }
 
     // Coroutine to periodically change gravity
-    IEnumerator GravityShift()
+    private IEnumerator GravityShift()
     {
         while (true)
         {
             yield return new WaitForSeconds(gravityChangeInterval);
-            ChangeGravity();
+
+            if (isTutorial)
+            {
+                ChangeGravityInTutorial();
+            }
+            else
+            {
+                ChangeGravity();
+            }
         }
     }
 
@@ -38,6 +65,11 @@ public class GravityController : MonoBehaviour
     {
         // Randomly choose one of the four directions (left, right, down, up)
         int randomDirection = Random.Range(0, 4);
+        if (randomDirection != currentDirection)
+        {
+            AudioManager.instance.PlayGravityChangeSFX();
+            currentDirection = randomDirection;
+        }
 
         switch (randomDirection)
         {
@@ -59,6 +91,42 @@ public class GravityController : MonoBehaviour
         if (playerRigidbody != null)
         {
             ApplyGravity();
+        }
+    }
+
+    void ChangeGravityInTutorial()
+    {
+        AudioManager.instance.PlayGravityChangeSFX();
+
+
+        switch (countDirection)
+        {
+            case 0: // Left
+                gravityDirection = Vector2.right;
+                break;
+            case 1: // Right
+                gravityDirection = Vector2.up;
+                break;
+            case 2: // Down
+                gravityDirection = Vector2.left;
+                break;
+            case 3: // Up
+                gravityDirection = Vector2.down;
+                TutorialManager.instance.AdvanceToNextStep();
+                break;
+        }
+
+
+        // Apply gravity direction and player rotation
+        if (playerRigidbody != null)
+        {
+            ApplyGravity();
+        }
+
+        countDirection++;
+        if (countDirection > 3)
+        {
+            countDirection = 0;
         }
     }
 

@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     public Button rightButton;
     public Button jumpButton;
 
-    private bool moveLeft;                  // Track if left button is being held
-    private bool moveRight;                 // Track if right button is being held
-    private bool jump = false;
+    [System.NonSerialized] public bool moveLeft;                  // Track if left button is being held
+    [System.NonSerialized] public bool moveRight;                 // Track if right button is being held
+    [System.NonSerialized] public bool jump = false;
 
     void Start()
     {

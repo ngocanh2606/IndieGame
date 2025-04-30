@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI loseText; 
     [SerializeField] private Button mainMenuButton; 
     [SerializeField] private GameObject[] gameObjects; 
-    [SerializeField] private GameObject playerCharacter; 
+    [SerializeField] private GameObject playerCharacter;
+    [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private Button[] actionButtons;
 
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     // Method to call when the player loses
     public void Lose()
     {
+        AudioManager.instance.PlayLoseSFX();
         playerAnimation.SetState(PlayerCharacterState.Die);
         StartCoroutine(WaitForDeathAnimation());
     }
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     // Method to call when the player wins
     public void Win()
     {
+        AudioManager.instance.PlayWinSFX();
         playerAnimation.SetState(PlayerCharacterState.Win);
         ShowWinText();
         GameEnd();
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         // Disable player movement and other actions
         DisableScene();
+        rb.AddForce(Vector2.down * 10, ForceMode2D.Force);  // Continuous gravity force
         ShowMainMenuButton();
     }
 
@@ -63,6 +67,18 @@ public class GameManager : MonoBehaviour
         if (playerShooting != null)
         {
             playerShooting.enabled = false;
+        }
+
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = false;
         }
 
         foreach (GameObject gameObject in gameObjects)

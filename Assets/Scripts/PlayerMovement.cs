@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;           // Movement speed
     public float jumpForce = 10f;      // Jump force
     public LayerMask groundLayer;      // Ground layer for checking if player is grounded
-    public Transform groundCheck;      // Position to check if player is grounded
+    public Transform[] groundCheck;      // Position to check if player is grounded
     private bool isGrounded;           // Whether the player is on the ground
 
     [System.NonSerialized] public Vector2 moveDirection = Vector2.zero;
@@ -36,15 +36,40 @@ public class PlayerMovement : MonoBehaviour
     {
         if (gravityScript == null) return;
 
-        // Check if the player is grounded using a small circle overlap at the groundCheck position
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
+        CheckIsGrounded();
+
+        foreach (Transform check in groundCheck)
+        {
+            isGrounded = isGrounded || Physics2D.OverlapCircle(check.position, 0.1f, groundLayer);
+        }
         // Apply normal movement
         transform.Translate(moveDirection * speed * Time.fixedDeltaTime);
 
         ApplyGravity();
         RunAnim();
+    }
 
+    private void CheckIsGrounded()
+    {
+        int count = 0;
+
+        foreach (Transform check in groundCheck)
+        {
+            if (Physics2D.OverlapCircle(check.position, 0.1f, groundLayer))
+            {
+                count++;
+            }
+        }
+
+        if (count == 2)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 
     public void SetMoveDirection(Vector2 direction)
@@ -93,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
+            AudioManager.instance.PlayJumpSFX();
             rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset the vertical velocity to avoid double jumping
             rb.AddForce(-gravityScript.gravityDirection * jumpForce, ForceMode2D.Impulse);  // Apply the jump force in the opposite direction of gravity
         }
