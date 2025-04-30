@@ -5,19 +5,11 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     [System.NonSerialized] public bool reached = false;
-    [SerializeField] private GameObject go;
+    public GameObject go;
 
     private void Start()
     {
         go.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (TutorialManager.instance.currentStep == TutorialStep.ReachCheckpoint)
-        {
-            go.SetActive(true);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,6 +17,7 @@ public class Checkpoint : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             reached = true;
+            go.SetActive(false);
         }
     }
 }

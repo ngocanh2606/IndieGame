@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerAnimation playerAnimation;
     [System.NonSerialized] public SpriteRenderer sprite;
 
+    [System.NonSerialized] public bool isJumping = false;
+
+
     private void Awake()
     {
         playerAnimation = GetComponent<PlayerAnimation>();
@@ -39,10 +42,6 @@ public class PlayerMovement : MonoBehaviour
 
         CheckIsGrounded();
 
-        foreach (Transform check in groundCheck)
-        {
-            isGrounded = isGrounded || Physics2D.OverlapCircle(check.position, 0.1f, groundLayer);
-        }
         // Apply normal movement
         transform.Translate(moveDirection * speed * Time.fixedDeltaTime);
 
@@ -52,24 +51,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckIsGrounded()
     {
-        int count = 0;
-
         foreach (Transform check in groundCheck)
         {
             if (Physics2D.OverlapCircle(check.position, 0.1f, groundLayer))
             {
-                count++;
+                isGrounded = true;
+                isJumping = false;
+                return;
             }
         }
 
-        if (count == 2)
-        {
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
+        isGrounded = false;
     }
 
     public void SetMoveDirection(Vector2 direction)
@@ -118,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
+            isJumping = true;
             AudioManager.instance.PlayJumpSFX();
             rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset the vertical velocity to avoid double jumping
             rb.AddForce(-gravityScript.gravityDirection * jumpForce, ForceMode2D.Impulse);  // Apply the jump force in the opposite direction of gravity
@@ -126,7 +119,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void ApplyGravity()
     {
-        // Apply gravity force (opposite of gravity direction) based on gravity scale
-        rb.AddForce(gravityScript.gravityForce, ForceMode2D.Force);  // Continuous gravity force
+        rb.AddForce(gravityScript.gravityForce, ForceMode2D.Force);
     }
 }

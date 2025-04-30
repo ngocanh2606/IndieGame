@@ -87,6 +87,8 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.instance.isPaused) { return; }
+
         if (isTutorial)
         {
             if(TutorialManager.instance.currentStep != TutorialStep.KillBoss)

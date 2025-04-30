@@ -22,12 +22,14 @@ public class TutorialManager : MonoBehaviour
 
     //Reference to other scripts
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Checkpoint checkpoint;
     [SerializeField] private AbilityManager abilityManager;
     [SerializeField] private GravityFreeAbility gravityFreeAbility;
     [SerializeField] private DashAbility dashAbility;
     [SerializeField] private GravityController gravityController;
     [SerializeField] private BossController bossController;
+
 
     void Awake()
     {
@@ -37,7 +39,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Destroy the new duplicate if one already exists
+            Destroy(gameObject);
             return;
         }
     }
@@ -65,13 +67,14 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case TutorialStep.Jump:
-                if (playerController.jump == true)
+                if (playerMovement.isJumping == true)
                 {
                     AdvanceToNextStep();
                 }
                 break;
 
             case TutorialStep.ReachCheckpoint:
+                checkpoint.go.SetActive(true);
                 if (checkpoint.reached)
                 {
                     AdvanceToNextStep();
@@ -99,7 +102,7 @@ public class TutorialManager : MonoBehaviour
                         stepInProgress = false;
                         break;
                     }
-                    else if (dashAbility.isDashing)
+                    else if (abilityManager.dashAttempted)
                     {
                         commonCount = 2;
                         currentStep = TutorialStep.ExplainDash;
@@ -109,7 +112,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if (commonCount == 1)
                 {
-                    if (dashAbility.isDashing)
+                    if (abilityManager.dashAttempted)
                     {
                         currentStep = TutorialStep.ExplainDash;
                         stepInProgress = false;
@@ -128,21 +131,30 @@ public class TutorialManager : MonoBehaviour
                     }
                 }
 
-                else if (commonCount == 3)
-                {
-                    AdvanceToNextStep();
-                }
-
                 break;
 
             case TutorialStep.ExplainGravityFree:
-                currentStep = TutorialStep.UseAbility;
-                stepInProgress = false;
+                if(commonCount == 3)
+                {
+                    AdvanceToNextStep();
+                }
+                else
+                {
+                    currentStep = TutorialStep.UseAbility;
+                    stepInProgress = false;
+                }
                 break;
 
             case TutorialStep.ExplainDash:
-                currentStep = TutorialStep.UseAbility;
-                stepInProgress = false;
+                if (commonCount == 3)
+                {
+                    AdvanceToNextStep();
+                }
+                else
+                {
+                    currentStep = TutorialStep.UseAbility;
+                    stepInProgress = false;
+                }
                 break;
 
             case TutorialStep.GravityTraining:
@@ -150,6 +162,11 @@ public class TutorialManager : MonoBehaviour
                 {
                     gravityController.StartGravityShift();
                     commonCount = 1;
+                }
+                if (commonCount == 1 && gravityController.countDirection == 4)
+                {
+                    gravityController.playerRigidbody.AddForce(10*Vector2.down, ForceMode2D.Force);
+                    commonCount = 2;
                 }
                 break;
 

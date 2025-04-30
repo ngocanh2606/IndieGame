@@ -16,8 +16,8 @@ public class AbilityManager : MonoBehaviour
     [System.Serializable]
     public struct Ability
     {
-        public AbilityType type;  
-        public Sprite sprite; 
+        public AbilityType type;
+        public Sprite sprite;
     }
 
     private PlayerAnimation playerAnimation;
@@ -30,6 +30,9 @@ public class AbilityManager : MonoBehaviour
     public GravityFreeAbility gravityFreeAbility;
     public DashAbility gravityDashAbility;
 
+    //Tutorial
+    [System.NonSerialized] public bool dashAttempted = false;
+
     private void Awake()
     {
         playerAnimation = GetComponent<PlayerAnimation>();
@@ -38,22 +41,22 @@ public class AbilityManager : MonoBehaviour
     void Start()
     {
         gravityFreeAbility = GetComponent<GravityFreeAbility>();
-        gravityDashAbility = GetComponent<DashAbility>();       
+        gravityDashAbility = GetComponent<DashAbility>();
     }
 
     // Method called when the ability button is pressed (UI event)
     public void OnAbilityButtonPressed()
     {
+        if (PauseManager.instance.isPaused) { return; }
+
         // If the ability stack has abilities, proceed to use one
         if (abilityStack.Count > 0)
         {
             // Check that no gravity or dash is in progress
             if (gravityFreeAbility.isGravityFree == false && gravityDashAbility.isDashing == false)
             {
-                AudioManager.instance.PlayUseAbilitySFX();
-                Ability currentAbility = abilityStack.Pop(); // Pop the top ability from the stack
+                Ability currentAbility = abilityStack.Peek();
                 UseAbility(currentAbility.type);             // Use the selected ability
-                UpdateAbilityUI();
             }
         }
     }
@@ -67,8 +70,8 @@ public class AbilityManager : MonoBehaviour
         // If the ability exists, add it to the stack and update the UI
         if (newAbility.HasValue)
         {
-            abilityStack.Push(newAbility.Value);  
-            UpdateAbilityUI();                    
+            abilityStack.Push(newAbility.Value);
+            UpdateAbilityUI();
         }
     }
 
@@ -83,14 +86,25 @@ public class AbilityManager : MonoBehaviour
                 break;
 
             case AbilityType.GravityDash:
+                StartCoroutine(WaitForDashAttempt());
                 PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
-                if(playerMovement.moveDirection.x != 0)
+                if (playerMovement.moveDirection.x != 0)
                 {
                     playerAnimation.SetState(PlayerCharacterState.Dash);
                     gravityDashAbility.Activate(playerMovement.moveDirection);
                 }
+                else { return; }
                 break;
         }
+        ConfirmUseAbility();
+    }
+
+    public void ConfirmUseAbility()
+    {
+        AudioManager.instance.PlayUseAbilitySFX();
+        Ability currentAbility = abilityStack.Pop(); // Pop the top ability from the stack
+        UpdateAbilityUI();
+
     }
 
     // Update the UI to show the current ability's icon or clear it if no abilities are available
@@ -105,5 +119,12 @@ public class AbilityManager : MonoBehaviour
         {
             abilityUIImage.sprite = null;
         }
+    }
+
+    private IEnumerator WaitForDashAttempt()
+    {
+        dashAttempted = true;
+        yield return new WaitForSeconds(0.5f);
+        dashAttempted = false;
     }
 }

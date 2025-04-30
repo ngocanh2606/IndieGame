@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   lifetime: 5
-  damage: 1
+  damage: 2
   anim: {fileID: 706701044218106803}
 --- !u!50 &473018308358178121
 Rigidbody2D:

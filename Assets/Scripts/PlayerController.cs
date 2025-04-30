@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (PauseManager.instance.isPaused) { return; }
         // Continuous movement when holding buttons
         if (moveLeft)
         {
@@ -85,6 +86,8 @@ public class PlayerController : MonoBehaviour
     // Handle jump button press
     private void OnJumpButtonPressed(BaseEventData data)
     {
-        jump= true;
+        if (PauseManager.instance.isPaused) { return; }
+
+        jump = true;
     }
 }
