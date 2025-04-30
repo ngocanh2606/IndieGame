@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public Joystick shootingJoystick;      // Reference to the joystick for shooting
-    public GameObject bulletPrefab;        // Bullet prefab for shooting
-    public Transform firePoint;            // Point from where bullets are fired
-    public float shootInterval = 0.5f;     // Time interval between subsequent shots
+    public GameObject bulletPrefab;   
+    public Joystick shootingJoystick; 
 
-    [System.NonSerialized] public bool isShooting;               // Track if player is shooting
-    private float shootTimer;              // Timer to manage shoot intervals
-    private bool firstShot;                // Track the first shot on touch
+    //Timing
+    public float shootInterval = 0.5f;  
+    private float shootTimer;     
+    private bool firstShot;      
+
+    //Shooting
+    public Transform firePoint;       
+    [System.NonSerialized] public bool isShooting;  
 
     void Update()
     {
@@ -26,8 +29,8 @@ public class PlayerShooting : MonoBehaviour
             if (!isShooting)
             {
                 isShooting = true;
-                firstShot = true; // Set first shot flag
-                shootTimer = 0;   // Reset timer
+                firstShot = true;
+                shootTimer = 0;
             }
 
             // Shoot immediately on first touch, then use interval
@@ -36,10 +39,10 @@ public class PlayerShooting : MonoBehaviour
                 AudioManager.instance.PlayShootSFX();
                 Shoot();
                 shootTimer = 0;
-                firstShot = false; // First shot done, rely on interval now
+                firstShot = false;
             }
 
-            // Increment timer for subsequent shots
+            
             shootTimer += Time.deltaTime;
         }
         else
@@ -54,15 +57,12 @@ public class PlayerShooting : MonoBehaviour
     {
         if (firePoint != null && bulletPrefab != null)
         {
-            // Calculate the direction from joystick input
             Vector2 shootDirection = new Vector2(shootingJoystick.Horizontal, shootingJoystick.Vertical).normalized;
 
-            // Instantiate a bullet at the fire point
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
-            // Set the bullet's rotation to face the direction
             float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
-            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90)); // Adjust angle to point correctly
+            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         }
     }
 

@@ -5,13 +5,12 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator animator;
-
     public PlayerCharacterState currentState;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        SetState(PlayerCharacterState.Idle); // Default
+        SetState(PlayerCharacterState.Idle);
     }
 
     public void SetState(PlayerCharacterState newState)

@@ -25,15 +25,11 @@ public class Projectile : MonoBehaviour
         if (!hasExploded)
         {
             transform.Translate(Vector2.up * speed * Time.deltaTime);
-
-            //rb.velocity = transform.right * speed;
         }
     }
 
-    // Handle collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Handle damage or destruction on collision
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHealth>().OnTakeDamage(damage);
@@ -51,10 +47,8 @@ public class Projectile : MonoBehaviour
         speed = 0f;
         anim.SetTrigger("Explode");
 
-        // Optional: Disable collider to prevent double triggering
         GetComponent<Collider2D>().enabled = false;
 
-        // Wait for animation to finish before destroying
         yield return new WaitForSeconds(0.2f);
 
         Destroy(gameObject);

@@ -7,16 +7,17 @@ public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager instance;
 
+    //Support logics
     public TutorialStep currentStep;
-
-    public GameObject[] tutorialPopups; // each popup UI for a step
     private bool stepInProgress = false;
-    private bool tutorialInProgress = false;
-
-    [SerializeField] private float[] popupTime;
-
     private int commonCount;
 
+    //Tutorial Popup UIs
+    public GameObject[] tutorialPopups;
+    [SerializeField] private float[] popupTime;
+    private bool tutorialInProgress = false;
+
+    //Reference to other game objects
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject[] boss;
 
@@ -207,12 +208,14 @@ public class TutorialManager : MonoBehaviour
     {
         stepInProgress = true;
         tutorialInProgress = true;
+
         // Show the correct popup
         foreach (GameObject popup in tutorialPopups)
             popup.SetActive(false);
 
         tutorialPopups[(int)currentStep].SetActive(true);
 
+        //Wait for the popup guide to finish
         yield return new WaitForSeconds(popupTime[(int)currentStep]);
 
         tutorialInProgress = false;

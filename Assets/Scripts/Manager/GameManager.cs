@@ -7,16 +7,20 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //UI
     [SerializeField] private TextMeshProUGUI winText;  
     [SerializeField] private TextMeshProUGUI loseText; 
     [SerializeField] private Button mainMenuButton; 
-    [SerializeField] private GameObject[] gameObjects; 
-    [SerializeField] private GameObject playerCharacter;
-    [SerializeField] private Rigidbody2D rb;
 
+    //To be disabled
+    [SerializeField] private GameObject[] gameObjects; 
     [SerializeField] private Button[] actionButtons;
 
+    //Run animation
     [SerializeField] private PlayerAnimation playerAnimation;
+    [SerializeField] private GameObject playerCharacter;
+
+    [SerializeField] private Rigidbody2D rb;
 
     // Method to call when the player loses
     public void Lose()
@@ -39,7 +43,7 @@ public class GameManager : MonoBehaviour
     {
         // Disable player movement and other actions
         DisableScene();
-        rb.AddForce(Vector2.down * 10, ForceMode2D.Force);  // Continuous gravity force
+        rb.AddForce(Vector2.down * 10, ForceMode2D.Force);
         ShowMainMenuButton();
     }
 
@@ -144,7 +148,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu"); // Replace with your actual game scene name
+        SceneManager.LoadScene("MainMenu");
     }
 
     public IEnumerator WaitForDeathAnimation()

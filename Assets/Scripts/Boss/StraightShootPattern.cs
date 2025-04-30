@@ -9,7 +9,6 @@ public class StraightShootPattern : IShootPattern
         for (int i = 0; i < projectileCount; i++)
         {
             GameObject projectile = GameObject.Instantiate(projectilePrefab, position, Quaternion.Euler(0, 0, angle));
-            // Add movement to the projectile (depending on your game mechanics)
         }
     }
 }

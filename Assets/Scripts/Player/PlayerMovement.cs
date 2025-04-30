@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;           // Movement speed
-    public float jumpForce = 10f;      // Jump force
-    public LayerMask groundLayer;      // Ground layer for checking if player is grounded
-    public Transform[] groundCheck;      // Position to check if player is grounded
-    private bool isGrounded;           // Whether the player is on the ground
-
-    [System.NonSerialized] public Vector2 moveDirection = Vector2.zero;
     private Rigidbody2D rb;
-
     private GravityController gravityScript;
 
-    private PlayerAnimation playerAnimation;
-    [System.NonSerialized] public SpriteRenderer sprite;
-
+    //Jump
+    public float jumpForce = 10f;  
+    public LayerMask groundLayer;  
+    public Transform[] groundCheck;
+    private bool isGrounded;
     [System.NonSerialized] public bool isJumping = false;
 
+    //Move horizontally
+    public float speed = 5f;
+    [System.NonSerialized] public Vector2 moveDirection = Vector2.zero;
+
+    //Animation
+    private PlayerAnimation playerAnimation;
+    [System.NonSerialized] public SpriteRenderer sprite;
 
     private void Awake()
     {
@@ -112,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = true;
             AudioManager.instance.PlayJumpSFX();
-            rb.velocity = new Vector2(rb.velocity.x, 0);  // Reset the vertical velocity to avoid double jumping
+            rb.velocity = new Vector2(rb.velocity.x, 0); 
             rb.AddForce(-gravityScript.gravityDirection * jumpForce, ForceMode2D.Impulse);  // Apply the jump force in the opposite direction of gravity
         }
     }

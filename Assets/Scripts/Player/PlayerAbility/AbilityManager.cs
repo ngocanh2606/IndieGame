@@ -22,11 +22,11 @@ public class AbilityManager : MonoBehaviour
 
     private PlayerAnimation playerAnimation;
 
-    public Image abilityUIImage;                                   // UI Image component to display the ability icon
-    public List<Ability> abilityDefinitions = new List<Ability>(); // List of defined abilities (collected abilities)
+    public Image abilityUIImage;
+    public List<Ability> abilityDefinitions = new List<Ability>();
     public Stack<Ability> abilityStack = new Stack<Ability>();    // Stack to store abilities that the player has collected
 
-    // References to the actual ability scripts for GravityFree and Dash
+    // References to the ability scripts
     public GravityFreeAbility gravityFreeAbility;
     public DashAbility gravityDashAbility;
 
@@ -49,14 +49,12 @@ public class AbilityManager : MonoBehaviour
     {
         if (PauseManager.instance.isPaused) { return; }
 
-        // If the ability stack has abilities, proceed to use one
         if (abilityStack.Count > 0)
         {
-            // Check that no gravity or dash is in progress
             if (gravityFreeAbility.isGravityFree == false && gravityDashAbility.isDashing == false)
             {
                 Ability currentAbility = abilityStack.Peek();
-                UseAbility(currentAbility.type);             // Use the selected ability
+                UseAbility(currentAbility.type); 
             }
         }
     }
@@ -96,15 +94,15 @@ public class AbilityManager : MonoBehaviour
                 else { return; }
                 break;
         }
+
         ConfirmUseAbility();
     }
 
     public void ConfirmUseAbility()
     {
         AudioManager.instance.PlayUseAbilitySFX();
-        Ability currentAbility = abilityStack.Pop(); // Pop the top ability from the stack
+        Ability currentAbility = abilityStack.Pop();
         UpdateAbilityUI();
-
     }
 
     // Update the UI to show the current ability's icon or clear it if no abilities are available

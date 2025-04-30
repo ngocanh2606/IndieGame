@@ -6,26 +6,25 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
-    public float constantSpeed = 5f;        // Speed of movement when holding buttons
+    public float constantSpeed = 5f; 
     public PlayerMovement playerMovement;
     public Button leftButton;
     public Button rightButton;
     public Button jumpButton;
 
+    //Bool check
     [System.NonSerialized] public bool moveLeft;                  // Track if left button is being held
     [System.NonSerialized] public bool moveRight;                 // Track if right button is being held
     [System.NonSerialized] public bool jump = false;
 
     void Start()
     {
-        // Add event listeners for button hold functionality
         AddEventTrigger(leftButton.gameObject, OnLeftButtonDown, EventTriggerType.PointerDown);
         AddEventTrigger(leftButton.gameObject, OnButtonUp, EventTriggerType.PointerUp);
 
         AddEventTrigger(rightButton.gameObject, OnRightButtonDown, EventTriggerType.PointerDown);
         AddEventTrigger(rightButton.gameObject, OnButtonUp, EventTriggerType.PointerUp);
 
-        // Add event listener for the jump button using PointerDown
         AddEventTrigger(jumpButton.gameObject, OnJumpButtonPressed, EventTriggerType.PointerDown);
 
     }
@@ -33,7 +32,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (PauseManager.instance.isPaused) { return; }
-        // Continuous movement when holding buttons
+
         if (moveLeft)
         {
             playerMovement.SetMoveDirection(Vector2.left);

@@ -5,6 +5,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+
+    //AudioSource
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource loopingSfxSource;
@@ -36,7 +38,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Destroy the new duplicate if one already exists
+            Destroy(gameObject);
             return;
         }
     }
@@ -79,7 +81,7 @@ public class AudioManager : MonoBehaviour
     public void StartLoopingSFX(AudioClip clip)
     {
         if (isEnd) return;
-        if (loopingSfxSource.isPlaying) return; // Avoid restarting if already playing
+        if (loopingSfxSource.isPlaying) return;
 
         loopingSfxSource.clip = clip;
         loopingSfxSource.loop = true;

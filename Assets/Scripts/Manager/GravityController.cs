@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class GravityController : MonoBehaviour
 {
-    public float gravityChangeInterval = 3f;  // Interval at which gravity changes
-    public float gravityStrength;       // Strength of gravity force (increase for faster falling)
-    public Rigidbody2D playerRigidbody;       // The player's Rigidbody2D
-    public Transform playerTransform;         // Player's Transform to rotate accordingly
-
-    public Vector2 gravityDirection = Vector2.down;         // Current gravity direction
+    //Custom Gravity values
+    public float gravityStrength;
     public Vector2 gravityForce;
 
+    //For changing directions
+    public Vector2 gravityDirection = Vector2.down;
+    public float gravityChangeInterval = 3f; 
     private int currentDirection = 2;
 
+    //References
+    public Rigidbody2D playerRigidbody;
+    public Transform playerTransform;
+
+    //For Tutorial
     private bool isTutorial;
     [System.NonSerialized] public int countDirection = 0;
 
@@ -46,13 +50,9 @@ public class GravityController : MonoBehaviour
     private IEnumerator GravityShift()
     {
         if (PauseManager.instance.isPaused) { yield break; }
+
         while (true)
         {
-            //if (isTutorial && currentDirection == 4 && )
-            //{
-            //    yield break;
-            //}
-                
             yield return new WaitForSeconds(gravityChangeInterval);
 
             if (isTutorial && currentDirection < 4)
@@ -77,7 +77,6 @@ public class GravityController : MonoBehaviour
         void ChangeGravity()
         {
             gravityChangeInterval = 20f;
-            // Randomly choose one of the four directions (left, right, down, up)
             int randomDirection = Random.Range(0, 4);
             if (randomDirection != currentDirection)
             {
@@ -87,21 +86,20 @@ public class GravityController : MonoBehaviour
 
             switch (randomDirection)
             {
-                case 0: // Left
+                case 0:
                     gravityDirection = Vector2.left;
                     break;
-                case 1: // Right
+                case 1:
                     gravityDirection = Vector2.right;
                     break;
-                case 2: // Down
+                case 2:
                     gravityDirection = Vector2.down;
                     break;
-                case 3: // Up
+                case 3:
                     gravityDirection = Vector2.up;
                     break;
             }
 
-            // Apply gravity direction and player rotation
             if (playerRigidbody != null)
             {
                 ApplyGravity();
@@ -131,7 +129,6 @@ public class GravityController : MonoBehaviour
             }
 
 
-            // Apply gravity direction and player rotation
             if (playerRigidbody != null)
             {
                 ApplyGravity();
@@ -143,38 +140,35 @@ public class GravityController : MonoBehaviour
             }
         }
     }
+
     // Apply the gravity force and rotate the player accordingly
     void ApplyGravity()
     {
-        playerRigidbody.velocity = Vector2.zero; // Reset velocity to avoid leftover movement
+        playerRigidbody.velocity = Vector2.zero;
 
-        // Apply gravity force in the new direction, considering the player's gravityScale
         gravityForce = gravityDirection * gravityStrength;
 
-        // Apply the gravity force to the player
         playerRigidbody.AddForce(gravityForce, ForceMode2D.Force);
 
-        // Rotate player to face the new gravity direction
         float angle = 0f;
 
         if (gravityDirection == Vector2.left)
         {
-            angle = -90f;  // Rotate 90 degrees to the left
+            angle = -90f;
         }
         else if (gravityDirection == Vector2.right)
         {
-            angle = 90f;  // Rotate 90 degrees to the right
+            angle = 90f;
         }
         else if (gravityDirection == Vector2.down)
         {
-            angle = 0f;  // Rotate 180 degrees (down)
+            angle = 0f;
         }
         else if (gravityDirection == Vector2.up)
         {
-            angle = 180f;    // No rotation, up is the default
+            angle = 180f;
         }
 
-        // Rotate the player to align with the gravity direction
         playerTransform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }

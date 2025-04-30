@@ -26,7 +26,7 @@ public class PauseManager : MonoBehaviour
     private void Start()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f; // Ensure the game is running at normal speed at the start
+        Time.timeScale = 1f;
     }
 
     public void PauseGame()

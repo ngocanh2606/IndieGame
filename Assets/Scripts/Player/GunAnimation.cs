@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class GunAnimation : MonoBehaviour
 {
+    //References
     public PlayerShooting playerShooting;
     public Animator gunAnimator;
-    public Transform gunTransform;
-
-    public SpriteRenderer sprite;
-
-    private float idleAngle;
-    private bool flip;
     public PlayerMovement playerMovement;
 
-    public Transform firePoint;
-    public Vector3 firePointOffset; // adjust as needed
+    //Gun visual
+    public SpriteRenderer sprite;
+    private float idleAngle;
+    private bool flip;
 
+    //Fire point
+    public Transform firePoint;
+    public Vector3 firePointOffset;
+
+    //For position and rotation
     public Transform playerTransform;
     private Transform playerLastTransform;
+    public Transform gunTransform;
 
     void Start()
     {
@@ -38,8 +41,6 @@ public class GunAnimation : MonoBehaviour
 
         HandleShootingAnimation();
         RotateGunWithJoystick();
-
-
     }
 
     private void RotateGunWithJoystick()
@@ -51,7 +52,6 @@ public class GunAnimation : MonoBehaviour
         x = playerShooting.shootingJoystick.Horizontal;
         y = playerShooting.shootingJoystick.Vertical;
 
-        // Only rotate if input is not zero
         if (x != 0 || y != 0)
         {
             Vector2 direction = new Vector2(x, y);
@@ -60,7 +60,6 @@ public class GunAnimation : MonoBehaviour
             //Gravity is down
             if (idleAngle == 0f)
             {
-                Debug.Log("Gravity is down");
                 if (direction.x < 0)
                 {
                     sprite.flipX = true;
@@ -78,7 +77,6 @@ public class GunAnimation : MonoBehaviour
             //Gravity is left
             else if (idleAngle == 270f)
             {
-                Debug.Log("Gravity is left");
                 if (direction.y > 0)
                 {
                     sprite.flipX = true;
@@ -94,7 +92,6 @@ public class GunAnimation : MonoBehaviour
             //Gravity is right
             else if (idleAngle == 90f)
             {
-                Debug.Log("Gravity is right");
                 if (direction.y < 0)
                 {
                     sprite.flipX = true;
@@ -110,7 +107,6 @@ public class GunAnimation : MonoBehaviour
             //Gravity is up
             else if (idleAngle == 180f)
             {
-                Debug.Log("Gravity is up");
                 if (direction.x > 0)
                 {
                     sprite.flipX = true;
@@ -130,7 +126,6 @@ public class GunAnimation : MonoBehaviour
         }
 
         firePoint.localPosition = sprite.flipX ? new Vector3(-firePointOffset.x, firePointOffset.y, firePointOffset.z) : firePointOffset;
-
     }
 
     private void HandleShootingAnimation()

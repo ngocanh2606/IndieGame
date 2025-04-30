@@ -160,9 +160,7 @@ public class BossController : MonoBehaviour
             currentHealth += regenerationRate;
             regenerationTimer = 0f; // Reset the timer
 
-            // Clamp the health to not exceed max health
             currentHealth = Mathf.Min(currentHealth, maxHealth);
-            Debug.Log("Boss health regenerated: " + regenerationRate + ", Current Health: " + currentHealth);
         }
     }
 
@@ -173,14 +171,11 @@ public class BossController : MonoBehaviour
         Vector3 directionToPlayer = (player.position - shootPoint.position).normalized;
         angleFromPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
 
-        // Calculate the health percentage of the boss
         float healthPercentage = currentHealth / maxHealth;
 
-        // Generate a random value between 0 and 1 to use for probabilistic selection
         float roll = Random.Range(0f, 1f);
 
         // Select shooting pattern based on health percentage and random roll
-
         if (isTutorial)
         {
             currentShootPattern = new SpiralShootPattern();
@@ -217,7 +212,6 @@ public class BossController : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0); // Ensure health doesn't go below 0
-        //Debug.Log("Boss health: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -228,7 +222,7 @@ public class BossController : MonoBehaviour
 
     private void Die()
     {
-        if (isDead) return;  // Prevent multiple death triggers
+        if (isDead) return; 
         if (isTutorial)
         {
             isTutorial = false;
@@ -236,7 +230,7 @@ public class BossController : MonoBehaviour
 
         isDead = true;
 
-        gameManager.Win();   // Call Win method from GameManager script
+        gameManager.Win();
         Destroy(bossGameObject);
     }
 }

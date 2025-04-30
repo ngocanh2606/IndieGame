@@ -8,10 +8,8 @@ public class CircularShootPattern : IShootPattern
     {
         for (int i = 0; i < projectileCount; i++)
         {
-            float currentAngle = angle + (i * 360f / projectileCount); // Calculate the angle for each shot
+            float currentAngle = angle + (i * 360f / projectileCount);
             GameObject projectile = GameObject.Instantiate(projectilePrefab, position, Quaternion.Euler(0, 0, currentAngle));
-            // Add movement to the projectile
-            //0, does not matter/0, 10
         }
     }
 }

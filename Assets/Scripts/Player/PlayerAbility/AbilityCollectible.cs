@@ -9,13 +9,12 @@ public class AbilityCollectible : MonoBehaviour
 
     void Start()
     {
-        // Get the reference to the AbilityManager script
         abilityManager = FindObjectOfType<AbilityManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // Ensure only the player can collect
+        if (other.CompareTag("Player"))
         {
             AbilityManager abilityManager = other.GetComponent<AbilityManager>();
             if (abilityManager != null)

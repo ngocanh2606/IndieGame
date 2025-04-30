@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 100f;           // Player's maximum health
-    private float currentHealth;                               // Player's current health
+    //Health values
+    [SerializeField] private float maxHealth = 100f;     
+    private float currentHealth;                
 
+    //Check state
     public bool isDead = false;
     public static bool isPlayerDead = false;
+    [SerializeField] private GameManager gameManager;         
 
-    [SerializeField] private GameManager gameManager;          // Reference to the GameManager script
     [SerializeField] private Slider healthBar;                 // Reference to the UI Slider (Health Bar)
 
     private PlayerAnimation playerAnimation;
@@ -25,15 +27,15 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        isDead = false;  // Initialize dead state
+        isDead = false;
         isPlayerDead = isDead;
-        currentHealth = maxHealth;           // Initialize current health to max health
+        currentHealth = maxHealth;  
         gameManager = FindObjectOfType<GameManager>();
 
         if (healthBar != null)
         {
-            healthBar.maxValue = maxHealth;  // Set the max value of the slider
-            healthBar.value = currentHealth; // Set the current value of the slider
+            healthBar.maxValue = maxHealth; 
+            healthBar.value = currentHealth; 
         }
 
         if (TutorialManager.instance != null)
@@ -44,7 +46,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        // Update the health bar to reflect the current health
         if (healthBar != null)
         {
             healthBar.value = currentHealth;
@@ -58,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
         playerAnimation.SetState(PlayerCharacterState.TakeDamage);
         AudioManager.instance.PlayHitSFX();
         currentHealth -= damageAmount;
-        currentHealth = Mathf.Max(currentHealth, 0); // Ensure health doesn't go below 0
+        currentHealth = Mathf.Max(currentHealth, 0);
 
         if (currentHealth <= 0)
         {
@@ -69,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        if (isDead) return;  // Prevent multiple death triggers
+        if (isDead) return;
         if (isTutorial)
         {
             currentHealth = maxHealth; // Reset health for tutorial
@@ -80,6 +81,6 @@ public class PlayerHealth : MonoBehaviour
         isDead = true;
         isPlayerDead = isDead;
 
-        gameManager.Lose();  // Call Lose method from GameManager script
+        gameManager.Lose();
     }
 }
