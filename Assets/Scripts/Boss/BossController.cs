@@ -175,17 +175,21 @@ public class BossController : MonoBehaviour
 
         float roll = Random.Range(0f, 1f);
 
-        // Select shooting pattern based on health percentage and random roll
+        // Spread : Spiral : Circular
+        // 0 : 1 : 0
         if (isTutorial)
         {
             currentShootPattern = new SpiralShootPattern();
             return;
         }
 
+        // 0.3 : 0.7 : 0
         if (healthPercentage > 0.7f)
         {
-            currentShootPattern = roll < 0.7f ? (IShootPattern)new SpreadShootPattern() : new SpiralShootPattern();
+            currentShootPattern = roll < 0.7f ? (IShootPattern)new SpiralShootPattern() : new SpreadShootPattern();
         }
+
+        // 0.5 : 0.25 : 0.25
         else if (healthPercentage > 0.3f)
         {
             currentPhase = 2;
@@ -199,11 +203,13 @@ public class BossController : MonoBehaviour
                 currentShootPattern = roll < 0.75f ? (IShootPattern)new SpiralShootPattern() : new CircularShootPattern();
             }
         }
+
+        // 0.5 : 0 : 0.5
         else
         {
             currentPhase = 3;
             bossBullet.damage = initialDamage * damageMultiplier * damageMultiplier;
-            currentShootPattern = roll < 0.5f ? (IShootPattern)new SpiralShootPattern() : new CircularShootPattern();
+            currentShootPattern = roll < 0.5f ? (IShootPattern)new SpreadShootPattern() : new CircularShootPattern();
         }
     }
 

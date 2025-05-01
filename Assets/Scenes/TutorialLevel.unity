@@ -1039,12 +1039,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644b6ad630b4cc34eb9cf4fd775625b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityChangeInterval: 20
   gravityStrength: 10
+  gravityForce: {x: 0, y: 0}
+  gravityDirection: {x: 0, y: -1}
+  gravityChangeInterval: 20
   playerRigidbody: {fileID: 1702471035}
   playerTransform: {fileID: 1702471032}
-  gravityDirection: {x: 0, y: -1}
-  gravityForce: {x: 0, y: 0}
 --- !u!1 &309205182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,12 +2146,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerShooting: {fileID: 1702471040}
   gunAnimator: {fileID: 460657609}
-  gunTransform: {fileID: 460657607}
-  sprite: {fileID: 460657608}
   playerMovement: {fileID: 1702471030}
+  sprite: {fileID: 460657608}
   firePoint: {fileID: 1501885444}
   firePointOffset: {x: 0, y: 0, z: 0}
   playerTransform: {fileID: 1702471032}
+  gunTransform: {fileID: 460657607}
 --- !u!1 &472305437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2509,6 +2509,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637006012}
   m_CullTransparentMesh: 1
+--- !u!1 &656666469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656666470}
+  m_Layer: 0
+  m_Name: WallCheck1
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &656666470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656666469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1582, y: -0.227, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1702471032}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &690927056 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 706701044218106803, guid: 96d85df16f7e3ce4fb3ff6c301548b0b, type: 3}
@@ -15871,7 +15902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b440067b0b863ec4e9736b2d1054fa58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   jumpForce: 8
   groundLayer:
     serializedVersion: 2
@@ -15879,6 +15909,10 @@ MonoBehaviour:
   groundCheck:
   - {fileID: 774870070}
   - {fileID: 472305438}
+  wallCheck:
+  - {fileID: 656666470}
+  - {fileID: 1705071958}
+  speed: 5
 --- !u!212 &1702471031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15946,6 +15980,8 @@ Transform:
   - {fileID: 774870070}
   - {fileID: 472305438}
   - {fileID: 460657607}
+  - {fileID: 656666470}
+  - {fileID: 1705071958}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16024,8 +16060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38627ac893590349855160ba2eb68a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 30
-  dashDuration: 1.077
+  dashSpeed: 10
+  dashDuration: 0.5
 --- !u!114 &1702471039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16052,10 +16088,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9b0f7eaf97b7140b983bf787a683b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingJoystick: {fileID: 1536160708}
   bulletPrefab: {fileID: 3177734191493547960, guid: 96d85df16f7e3ce4fb3ff6c301548b0b, type: 3}
-  firePoint: {fileID: 1501885444}
+  shootingJoystick: {fileID: 1536160708}
   shootInterval: 0.1
+  firePoint: {fileID: 1501885444}
 --- !u!95 &1702471041
 Animator:
   serializedVersion: 5
@@ -16109,7 +16145,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015672766, y: -0.23113137}
+  m_Offset: {x: 0.0033598766, y: -0.23113137}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -16120,7 +16156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35307187, y: 0.53773725}
+  m_Size: {x: 0.3284461, y: 0.53773725}
   m_EdgeRadius: 0
 --- !u!114 &1702471043
 MonoBehaviour:
@@ -16135,6 +16171,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+--- !u!1 &1705071957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1705071958}
+  m_Layer: 0
+  m_Name: WallCheck2
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1705071958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705071957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1374, y: -0.227, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1702471032}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1716334676
 GameObject:
   m_ObjectHideFlags: 0
@@ -16697,14 +16764,14 @@ MonoBehaviour:
   - {fileID: 1794765229}
   - {fileID: 460657606}
   - {fileID: 1570466267}
-  playerCharacter: {fileID: 1702471029}
-  rb: {fileID: 1702471035}
   actionButtons:
   - {fileID: 1389552493}
   - {fileID: 1447744401}
   - {fileID: 1926648276}
   - {fileID: 610346013}
   playerAnimation: {fileID: 1702471043}
+  playerCharacter: {fileID: 1702471029}
+  rb: {fileID: 1702471035}
 --- !u!114 &1788453021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17905,10 +17972,10 @@ MonoBehaviour:
   player: {fileID: 1702471032}
   bossGameObject: {fileID: 1978669503}
   healthBar: {fileID: 1487059142}
-  maxHealth: 100
+  maxHealth: 1000
   isDead: 0
   regenerationRate: 1
-  regenerationInterval: 1
+  regenerationInterval: 3
   patternChangeInterval: 6
   fireCooldownTime: 0.5
   projectilePrefab: {fileID: 3275823695345185366, guid: 2df11bb862d964a4cabe9ff7a2679512, type: 3}

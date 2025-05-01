@@ -14,6 +14,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     [System.NonSerialized] public bool isJumping = false;
 
+    //Check for colliding with wall
+    public Transform[] wallCheck;
+    private Vector3 playerRight;
+    private Vector3 playerLeft;
+
     //Move horizontally
     public float speed = 5f;
     [System.NonSerialized] public Vector2 moveDirection = Vector2.zero;
@@ -34,13 +39,16 @@ public class PlayerMovement : MonoBehaviour
 
         gravityScript = FindObjectOfType<GravityController>();
 
+        playerRight = wallCheck[0].localPosition;
+        playerLeft = wallCheck[1].localPosition;
+
     }
 
     void FixedUpdate()
     {
         if (gravityScript == null) return;
 
-
+        CheckCollideWall();
         CheckIsGrounded();
 
         // Apply normal movement
@@ -65,22 +73,39 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = false;
     }
 
+    private void CheckCollideWall()
+    {
+        if (Physics2D.OverlapCircle(wallCheck[0].position, 0.1f, groundLayer) && !isGrounded)
+        {
+            moveDirection.x = 0;
+        }
+    }
+
     public void SetMoveDirection(Vector2 direction)
     {
         moveDirection = direction;
         if (direction.x > 0)
         {
             sprite.flipX = false;
+            wallCheck[0].localPosition = playerRight;
+            wallCheck[1].localPosition = playerLeft;
         }
         else if (direction.x < 0)
         {
             sprite.flipX = true;
+            wallCheck[0].localPosition = playerLeft;
+            wallCheck[1].localPosition = playerRight;
         }
     }
 
     public void StopMoving()
     {
         moveDirection = Vector2.zero;
+    }
+
+    public void StopMovingHorizontally()
+    {
+        moveDirection.x = 0;
     }
 
     public void RunAnim()

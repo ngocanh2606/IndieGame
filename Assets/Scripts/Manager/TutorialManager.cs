@@ -137,7 +137,9 @@ public class TutorialManager : MonoBehaviour
             case TutorialStep.ExplainGravityFree:
                 if(commonCount == 3)
                 {
-                    AdvanceToNextStep();
+                    currentStep = TutorialStep.GravityTraining;
+                    commonCount = 0;
+                    stepInProgress = false;
                 }
                 else
                 {
